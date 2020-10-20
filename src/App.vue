@@ -28,8 +28,8 @@
     :maxHeight="300"
     placeholder="get this option"
   >
-    <template v-slot:noResults>Es konnte kein Ergebnis gefunden werden.</template>
-    <template v-slot:error>Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.</template>
+    <template #:noResults>Es konnte kein Ergebnis gefunden werden.</template>
+    <template #:error>Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.</template>
   </AutoSelect>
 
   <br>

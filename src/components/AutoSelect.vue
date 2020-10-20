@@ -3,18 +3,18 @@
     <input
       ref="inputElement"
       type="text"
+      autocomplete="off"
       class="auto-select__input"
       :class="{
         'auto-select__input--openDown': showResults && showResultsDirection === Direction.DOWN,
         'auto-select__input--openUp': showResults && showResultsDirection === Direction.UP
       }"
-      autocomplete="off"
       @focus="showResults = true"
       @click="showResults = true"
       @input="showResults = true; $emit('update:modelValue', null); searchTerm = $event.target.value;"
       @blur="showResults = false;"
-      :data-model="modelValue"
       :value="modelValue ? modelValue.name : searchTerm"
+      :placeholder="placeholder"
     >
     <span
       v-if="searchState === SearchState.LOADING"
@@ -32,16 +32,20 @@
         'auto-select__result--down': showResultsDirection === Direction.DOWN,
         'auto-select__result--up': showResultsDirection === Direction.UP
       }"
-      v-show="showResults"
+      v-if="showResults"
     >
-      <template v-if="searchState === SearchState.DONE && (searchResults && searchResults.length <= 0) && !customMessage">
-        <div class="auto-select__result__statusMessage">no results</div>
+      <template v-if="searchState === SearchState.DONE && (searchResults && searchResults.length <= 0) && !message">
+        <div class="auto-select__result__statusMessage">
+          <slot name="noResults">No results found</slot>
+        </div>
       </template>
       <template v-else-if="searchState === SearchState.ERROR">
-        <div class="auto-select__result__statusMessage">error</div>
+        <div class="auto-select__result__statusMessage">
+          <slot name="error">An error happened, please try again</slot>
+        </div>
       </template>
-      <template v-else-if="searchState === SearchState.DONE && customMessage">
-        <div class="auto-select__result__statusMessage">{{ customMessage }}</div>
+      <template v-else-if="searchState === SearchState.DONE && message">
+        <div class="auto-select__result__statusMessage">{{ message }}</div>
       </template>
       <template v-if="(searchState === SearchState.DONE || searchState === SearchState.LOADING) && (searchResults && searchResults.length > 0)">
         <a v-for="option in searchResults" :key="option.id" class="auto-select__result__option" @mousedown.prevent="$emit('update:modelValue', option); showResults = false;">{{ option.name }}</a>
@@ -88,6 +92,10 @@ export default defineComponent({
     searchFunction: {
       type: Function as PropType<null | ((searchTerm: string) => Promise<{ message: null| string; result?: Option[] }>)>,
       default: null
+    },
+    placeholder: {
+      type: String,
+      default: ""
     }
   },
   setup(props) {
@@ -98,7 +106,7 @@ export default defineComponent({
 
     const searchState = ref(SearchState.NONE);
     const searchResults: Ref<undefined | Option[]> = ref([]);
-    const customMessage: Ref<null | string> = ref(null);
+    const message: Ref<null | string> = ref(null);
     const showResultsDirection = ref(Direction.DOWN);
     const showResults = ref(false);
 
@@ -135,7 +143,7 @@ export default defineComponent({
 
     const searchTerm = ref("");
     watch(searchTerm, async () => {
-      customMessage.value = null;
+      message.value = null;
 
       if (searchFunction.value !== null && options.value === null) {
         try {
@@ -143,7 +151,7 @@ export default defineComponent({
 
           const result = await searchFunction.value(searchTerm.value);
           searchResults.value = result.result;
-          customMessage.value = result.message;
+          message.value = result.message;
 
           searchState.value = SearchState.DONE;
         } catch (error) {
@@ -173,7 +181,7 @@ export default defineComponent({
       Direction,
       SearchState,
 
-      customMessage,
+      message,
       searchTerm,
       searchResults,
       searchState,
@@ -198,8 +206,14 @@ export default defineComponent({
   box-sizing: border-box;
   padding: 0.7rem;
   padding-right: 0.7rem + 1rem + 0.7rem;
+  font-family: inherit;
   font-size: 1rem;
   width: 100%;
+
+  &:focus {
+    border-color: grey;
+    outline: none;
+  }
 
   &--openDown {
     border-bottom-left-radius: 0;

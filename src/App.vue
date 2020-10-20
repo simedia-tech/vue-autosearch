@@ -26,7 +26,11 @@
     v-model="selectedOption"
     :options="[{ id: 1, name: 'first' }, { id: 2, name: 'second' }, { id: 3, name: 'third' }, { id: 4, name: 'fourth' }, { id: 5, name: 'fifth' }, { id: 6, name: 'sixth' }, { id: 7, name: 'seventh' }, { id: 8, name: 'eight' }, { id: 9, name: 'nenth' }, { id: 10, name: 'tenth' }]"
     :maxHeight="300"
-  />
+    placeholder="get this option"
+  >
+    <template v-slot:noResults>Es konnte kein Ergebnis gefunden werden.</template>
+    <template v-slot:error>Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.</template>
+  </AutoSelect>
 
   <br>
   <br>

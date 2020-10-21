@@ -24,7 +24,9 @@
       "dom",
       "dom.iterable",
       "scripthost"
-    ]
+    ],
+    "declaration": true,
+    "declarationDir": "dist"
   },
   "include": [
     "src/**/*.ts",

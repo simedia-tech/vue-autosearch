@@ -194,7 +194,7 @@ export enum SearchState {
 }
 
 export default defineComponent({
-  name: "vue-autosearch",
+  name: "VueAutosearch",
   props: {
     options: {
       type: Array as PropType<null | Option[]>,

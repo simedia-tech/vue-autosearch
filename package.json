@@ -11,13 +11,13 @@
     "type": "git",
     "url": "https://github.com/simedia-tech/vue-autosearch.git"
   },
-  "main": "dist/vue-autosearch.umd.min.js",
-  "module": "dist/vue-autosearch.common.js",
-  "unpkg": "dist/vue-autosearch.umd.min.js",
-  "typings": "dist/vue-autosearch.d.ts",
+  "main": "dist/VueAutosearch.umd.min.js",
+  "module": "dist/VueAutosearch.common.js",
+  "unpkg": "dist/VueAutosearch.umd.min.js",
+  "typings": "dist/VueAutosearch.d.ts",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name VueAutosearch src/components/vue-autosearch.vue && cp src/vue-autosearch.d.ts dist/vue-autosearch.d.ts",
+    "build": "vue-cli-service build --target lib --name VueAutosearch src/components/VueAutosearch.vue && cp src/VueAutosearch.d.ts dist/VueAutosearch.d.ts",
     "lint": "vue-cli-service lint"
   },
   "devDependencies": {

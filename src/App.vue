@@ -24,7 +24,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, Ref, ref } from "vue";
-import VueAutosearch from "./components/vue-autosearch.vue";
+import VueAutosearch from "./components/VueAutosearch.vue";
 
 export default defineComponent({
   name: "App",

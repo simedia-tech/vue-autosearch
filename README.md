@@ -26,7 +26,8 @@ npm i vue-autosearch
 
 **CDN:**
 ```javascript
-<script src="https://cdn.jsdelivr.net/npm/vue-autosearch"></script>
+<script src="https://unpkg.com/vue-autosearch/dist/VueAutosearch.umd.js"></script>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/vue-autosearch/dist/VueAutosearch.css" />
 ```
 
 ## Basic usage
@@ -58,7 +59,7 @@ npm i vue-autosearch
   }
 </script>
 
-<style src="vue-autosearch/dist/vue-autosearch.css"></style>
+<style src="vue-autosearch/dist/VueAutosearch.css"></style>
 ```
 
 ---
@@ -154,7 +155,7 @@ Renders an input form and as soon as the search input gets focussed, the user se
   }
 </script>
 
-<style src="vue-autosearch/dist/vue-autosearch.css"></style>
+<style src="vue-autosearch/dist/VueAutosearch.css"></style>
 ```
 
 ### Custom placeholder and custom maxHeight
@@ -191,7 +192,7 @@ Same as the minimal version, but adds a custom placeholder text and changes the 
   }
 </script>
 
-<style src="vue-autosearch/dist/vue-autosearch.css"></style>
+<style src="vue-autosearch/dist/VueAutosearch.css"></style>
 ```
 
 ### Custom message texts
@@ -230,7 +231,7 @@ Same as the minimal version, but adds custom texts to be shown if no results wer
   }
 </script>
 
-<style src="vue-autosearch/dist/vue-autosearch.css"></style>
+<style src="vue-autosearch/dist/VueAutosearch.css"></style>
 ```
 
 ### Custom search function
@@ -284,5 +285,5 @@ Use the searchFunction prop to handle custom search logic, debouncing and async 
   }
 </script>
 
-<style src="vue-autosearch/dist/vue-autosearch.css"></style>
+<style src="vue-autosearch/dist/VueAutosearch.css"></style>
 ```

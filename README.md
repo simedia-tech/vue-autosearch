@@ -6,6 +6,15 @@ A Vue.js 3 component for synchronous and asynchronous autocomplete and search.
 - Works with synchronous options or custom search logic
 - Supports `v-model`
 
+---
+
+## Sponsors
+<a href="https://www.simedia.com/" title="SiMedia" target="_blank" rel="nofollow"><img src="./sponsors/simedia.svg" style="width: 100%; max-width: 350px"></a>
+
+SiMedia is focussed on websites, tourism portals, online marketing and software for the touristic sector.
+
+---
+
 ## Available options
 
 ### `v-model`
@@ -171,7 +180,7 @@ Use the searchFunction prop to handle custom search logic, debouncing and async 
 
           searchTimeout = setTimeout(async () => {
             const searchResults = (await (await fetch(`https://nominatim.openstreetmap.org/search.php?q=${searchTerm}&polygon_geojson=1&format=jsonv2`)).json()).map((result: { place_id: number; display_name: string }) => ({ id: result.place_id, name: result.display_name }));
-            
+
             return resolve({
               result: searchResults
             })

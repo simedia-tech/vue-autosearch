@@ -1,4 +1,4 @@
-<style scoped lang="scss">
+<style lang="scss">
 .auto-select__wrapper {
   box-sizing: border-box;
   position: relative;

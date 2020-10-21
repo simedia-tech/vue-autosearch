@@ -1,4 +1,4 @@
-# Vue Autosearch ![GitHub Actions](https://github.com/simedia-tech/vue-autosearch/workflows/GitHub%20Actions/badge.svg) [![npm](https://img.shields.io/npm/v/vue-autosearch.svg)](https://www.npmjs.com/package/vue-autosearch)
+# Vue Autosearch ![GitHub Actions](https://github.com/simedia-tech/vue-autosearch/workflows/GitHub%20Actions/badge.svg) [![npm](https://img.shields.io/npm/v/vue-autosearch.svg)](https://www.npmjs.com/package/vue-autosearch) ![minzip](https://badgen.net/bundlephobia/minzip/vue-autosearch)
 A Vue.js 3 component for synchronous and asynchronous autocomplete and search.
 
 ## Characteristics
@@ -6,6 +6,8 @@ A Vue.js 3 component for synchronous and asynchronous autocomplete and search.
 - Works with synchronous options or custom search logic
 - Supports `v-model`
 - Customizable texts for different languages
+- Small footprint (~7KB minified + gzip)
+- Tree-shakable
 
 ---
 

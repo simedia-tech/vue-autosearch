@@ -13,7 +13,7 @@
   },
   "main": "dist/vue-autosearch.umd.min.js",
   "module": "dist/vue-autosearch.common.js",
-  "unpkg": "dist/vue-autosearch.min.js",
+  "unpkg": "dist/vue-autosearch.umd.min.js",
   "typings": "dist/vue-autosearch.d.ts",
   "scripts": {
     "serve": "vue-cli-service serve",

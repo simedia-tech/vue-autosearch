@@ -1,14 +1,5 @@
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("vue"));
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else if(typeof exports === 'object')
-		exports["vue-autosearch"] = factory(require("vue"));
-	else
-		root["vue-autosearch"] = factory(root["Vue"]);
-})((typeof self !== 'undefined' ? self : this), function(__WEBPACK_EXTERNAL_MODULE__8bbf__) {
-return /******/ (function(modules) { // webpackBootstrap
+module.exports =
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -202,7 +193,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /***/ "8bbf":
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__8bbf__;
+module.exports = require("vue");
 
 /***/ }),
 
@@ -1309,5 +1300,4 @@ vue_autosearchvue_type_script_lang_ts.render = render
 /***/ })
 
 /******/ })["default"];
-});
-//# sourceMappingURL=vue-autosearch.umd.js.map
+//# sourceMappingURL=VueAutosearch.common.js.map

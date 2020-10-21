@@ -17,7 +17,7 @@
   "typings": "dist/vue-autosearch.d.ts",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name vue-autosearch src/components/vue-autosearch.vue && cp src/vue-autosearch.d.ts dist/vue-autosearch.d.ts",
+    "build": "vue-cli-service build --target lib --name VueAutosearch src/components/vue-autosearch.vue && cp src/vue-autosearch.d.ts dist/vue-autosearch.d.ts",
     "lint": "vue-cli-service lint"
   },
   "devDependencies": {

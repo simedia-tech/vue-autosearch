@@ -23,11 +23,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import VueAutosearch from './components/vue-autosearch.vue';
+import { defineComponent, ref } from "vue";
+import VueAutosearch from "./components/vue-autosearch.vue";
 
 export default defineComponent({
-  name: 'App',
+  name: "App",
   components: {
     VueAutosearch
   },
@@ -49,7 +49,7 @@ export default defineComponent({
         searchTimeout = setTimeout(async () => {
           return resolve({
             result: (await (await fetch(`https://nominatim.openstreetmap.org/search.php?q=${searchTerm}&polygon_geojson=1&format=jsonv2`)).json()).map((result: { place_id: number; display_name: string }) => ({ id: result.place_id, name: result.display_name }))
-          })
+          });
         }, 500);
       });
     };
@@ -59,7 +59,7 @@ export default defineComponent({
       selectedSearchOption,
 
       searchFunction
-    }
+    };
   }
 });
 </script>

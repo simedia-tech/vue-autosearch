@@ -9,7 +9,7 @@ A Vue.js 3 component for synchronous and asynchronous autocomplete and search.
 ---
 
 ## Sponsors
-<a href="https://www.simedia.com/" title="SiMedia" target="_blank" rel="nofollow"><img src="./sponsors/simedia.svg" style="width: 100%; max-width: 350px"></a>
+<a href="https://www.simedia.com/" title="SiMedia" rel="nofollow"><img src="./sponsors/simedia.svg" style="max-width: 350px"></a>
 
 SiMedia is focussed on websites, tourism portals, online marketing and software for the touristic sector.
 

@@ -1,7 +1,6 @@
 {
   "name": "vue-autosearch",
   "version": "0.1.0",
-  "private": true,
   "author": {
     "name": "Ivan Sieder",
     "email": "ivan@sieder.xyz",

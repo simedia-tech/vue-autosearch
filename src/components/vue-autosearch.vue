@@ -261,7 +261,7 @@ export default defineComponent({
     });
 
     const searchTerm = ref("");
-    watch(searchTerm, async () => {
+    const filterAction = async () => {
       message.value = null;
 
       if (searchFunction.value !== null && options.value === null) {
@@ -289,7 +289,10 @@ export default defineComponent({
 
         searchResults.value = optionsToReturn;
       }
-    }, { immediate: true });
+    };
+
+    watch(searchTerm, filterAction, { immediate: true });
+    watch(options, filterAction, { immediate: true });
 
     return {
       inputElement,

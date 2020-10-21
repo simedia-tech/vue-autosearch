@@ -3,7 +3,7 @@
   <hr>
   <VueAutosearch
     v-model="selectedOption"
-    :options="[{ id: 1, name: 'first' }, { id: 2, name: 'second' }, { id: 3, name: 'third' }, { id: 4, name: 'fourth' }, { id: 5, name: 'fifth' }, { id: 6, name: 'sixth' }, { id: 7, name: 'seventh' }, { id: 8, name: 'eight' }, { id: 9, name: 'nenth' }, { id: 10, name: 'tenth' }]"
+    :options="options"
     placeholder="direct options"
   >
     <template #:noResults>Es konnte kein Ergebnis gefunden werden.</template>
@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, onMounted, Ref, ref } from "vue";
 import VueAutosearch from "./components/vue-autosearch.vue";
 
 export default defineComponent({
@@ -54,9 +54,18 @@ export default defineComponent({
       });
     };
 
+    const options: Ref<{ id: number; name: string }[]> = ref([]);
+    onMounted(() => {
+      setTimeout(() => {
+        console.log("added");
+        options.value = [{ id: 1, name: "first" }, { id: 2, name: "second" }, { id: 3, name: "third" }, { id: 4, name: "fourth" }, { id: 5, name: "fifth" }, { id: 6, name: "sixth" }, { id: 7, name: "seventh" }, { id: 8, name: "eight" }, { id: 9, name: "nenth" }, { id: 10, name: "tenth" }];
+      }, 2000);
+    });
+
     return {
       selectedOption,
       selectedSearchOption,
+      options,
 
       searchFunction
     };

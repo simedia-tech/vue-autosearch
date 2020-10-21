@@ -996,7 +996,7 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/vue-autosearch.vue?vue&type=template&id=333cacb2&bindings={}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/vue-autosearch.vue?vue&type=template&id=757dd508&bindings={}
 
 var _hoisted_1 = {
   class: "auto-select__wrapper"
@@ -1093,7 +1093,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* KEYED_FRAGMENT */
   )) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 2), [[external_commonjs_vue_commonjs2_vue_root_Vue_["vShow"], _ctx.showResults]])]);
 }
-// CONCATENATED MODULE: ./src/components/vue-autosearch.vue?vue&type=template&id=333cacb2&bindings={}
+// CONCATENATED MODULE: ./src/components/vue-autosearch.vue?vue&type=template&id=757dd508&bindings={}
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
 var regenerator = __webpack_require__("a34a");
@@ -1190,63 +1190,75 @@ var SearchState;
       }
     });
     var searchTerm = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])("");
-    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watch"])(searchTerm, /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regenerator_default.a.mark(function _callee() {
-      var result, optionsToReturn;
-      return regenerator_default.a.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              message.value = null;
 
-              if (!(searchFunction.value !== null && options.value === null)) {
-                _context.next = 18;
-                break;
-              }
+    var filterAction = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regenerator_default.a.mark(function _callee() {
+        var result, optionsToReturn;
+        return regenerator_default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                message.value = null;
 
-              _context.prev = 2;
-              searchState.value = SearchState.LOADING;
-              _context.next = 6;
-              return searchFunction.value(searchTerm.value);
-
-            case 6:
-              result = _context.sent;
-              searchResults.value = result.result;
-              message.value = result.message;
-              searchState.value = SearchState.DONE;
-              _context.next = 16;
-              break;
-
-            case 12:
-              _context.prev = 12;
-              _context.t0 = _context["catch"](2);
-              searchResults.value = [];
-              searchState.value = SearchState.ERROR;
-
-            case 16:
-              _context.next = 19;
-              break;
-
-            case 18:
-              if (searchFunction.value === null && options.value !== null) {
-                searchState.value = SearchState.DONE;
-                optionsToReturn = options.value;
-
-                if (searchTerm.value.trim().length > 0) {
-                  optionsToReturn = optionsToReturn.filter(function (option) {
-                    return option.name.toLowerCase().includes(searchTerm.value.toLowerCase());
-                  });
+                if (!(searchFunction.value !== null && options.value === null)) {
+                  _context.next = 18;
+                  break;
                 }
 
-                searchResults.value = optionsToReturn;
-              }
+                _context.prev = 2;
+                searchState.value = SearchState.LOADING;
+                _context.next = 6;
+                return searchFunction.value(searchTerm.value);
 
-            case 19:
-            case "end":
-              return _context.stop();
+              case 6:
+                result = _context.sent;
+                searchResults.value = result.result;
+                message.value = result.message;
+                searchState.value = SearchState.DONE;
+                _context.next = 16;
+                break;
+
+              case 12:
+                _context.prev = 12;
+                _context.t0 = _context["catch"](2);
+                searchResults.value = [];
+                searchState.value = SearchState.ERROR;
+
+              case 16:
+                _context.next = 19;
+                break;
+
+              case 18:
+                if (searchFunction.value === null && options.value !== null) {
+                  searchState.value = SearchState.DONE;
+                  optionsToReturn = options.value;
+
+                  if (searchTerm.value.trim().length > 0) {
+                    optionsToReturn = optionsToReturn.filter(function (option) {
+                      return option.name.toLowerCase().includes(searchTerm.value.toLowerCase());
+                    });
+                  }
+
+                  searchResults.value = optionsToReturn;
+                }
+
+              case 19:
+              case "end":
+                return _context.stop();
+            }
           }
-        }
-      }, _callee, null, [[2, 12]]);
-    })), {
+        }, _callee, null, [[2, 12]]);
+      }));
+
+      return function filterAction() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watch"])(searchTerm, filterAction, {
+      immediate: true
+    });
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watch"])(options, filterAction, {
       immediate: true
     });
     return {

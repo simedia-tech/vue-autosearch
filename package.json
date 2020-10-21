@@ -9,6 +9,7 @@
   "main": "dist/vue-autosearch.umd.min.js",
   "module": "dist/vue-autosearch.common.js",
   "unpkg": "dist/vue-autosearch.min.js",
+  "typings": "dist/vue-autosearch.d.ts",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name vue-autosearch src/components/vue-autosearch.vue && cp src/vue-autosearch.d.ts dist/vue-autosearch.d.ts",

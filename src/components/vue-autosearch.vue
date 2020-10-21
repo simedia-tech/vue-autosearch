@@ -9,16 +9,11 @@
   border: 1px solid lightgrey;
   border-radius: 0.2rem;
   box-sizing: border-box;
-  padding: 0.7rem;
-  padding-right: 0.7rem + 1rem + 0.7rem;
   font-family: inherit;
   font-size: 1rem;
+  padding: 0.4rem;
+  padding-right: 0.4rem + 1rem + 0.4rem;
   width: 100%;
-
-  &:focus {
-    border-color: grey;
-    outline: none;
-  }
 
   &--openDown {
     border-bottom-left-radius: 0;
@@ -39,11 +34,11 @@
   border-radius: 50%;
   box-sizing: border-box;
   display: inline-block;
-  height: 0.5rem;
+  height: 0.4rem;
   position: absolute;
-  left: 0.25rem;
-  top: 0.25rem;
-  width: 0.5rem;
+  left: 0.2rem;
+  top: 0.2rem;
+  width: 0.4rem;
 }
 
 .auto-select__clearSearch {
@@ -52,7 +47,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   top: calc(50% - 0.5rem);
-  right: 0.7rem;
+  right: 0.4rem;
   height: 1rem;
   position: absolute;
   width: 1rem;

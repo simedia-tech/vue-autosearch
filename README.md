@@ -82,6 +82,7 @@ npm i vue-autosearch
 
 ### `options`
 - an array containing elements typed as { id: number; name: string }
+- can alternatively be a ref with an empty array, which will be populated later with data (asynchronous without using a custom searchFunction)
 - example usage: `v-bind:options="[{ id: 1, name: 'Tesla Model S' }, { id: 2, name: 'Tesla Model 3' }]"`
 - defaults to null
 - when passing an options array, the options will be directly shown in the output when the user clicks or focusses the search input

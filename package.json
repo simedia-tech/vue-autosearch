@@ -7,9 +7,15 @@
     "email": "ivan@sieder.xyz",
     "url": "https://simedia.tech"
   },
+  "main": "dist/vue-autosearch.umd.min.js",
+  "module": "dist/vue-autosearch.common.js",
+  "unpkg": "dist/vue-autosearch.min.js",
+  "browser": {
+    "./sfc": "src/components/vue-autosearch.vue"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target lib --name vue-autosearch src/components/vue-autosearch.vue",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -23,12 +29,12 @@
     "@vue/cli-plugin-eslint": "^4.5.8",
     "@vue/cli-plugin-typescript": "^4.5.8",
     "@vue/cli-service": "^4.5.8",
-    "@vue/compiler-sfc": "^3.0.1",
+    "@vue/compiler-sfc": "^3.0.2",
     "@vue/eslint-config-typescript": "^5.1.0",
-    "eslint": "^6.7.2",
+    "eslint": "^6.8.0",
     "eslint-plugin-vue": "^7.1.0",
     "sass": "^1.27.0",
     "sass-loader": "^8.0.2",
-    "typescript": "~4.0.3"
+    "typescript": "^4.0.3"
   }
 }

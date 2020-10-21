@@ -1,20 +1,21 @@
 <template>
   selected result: {{ selectedOption }}
   <hr>
-  <AutoSearch
+  <VueAutosearch
     v-model="selectedOption"
     :options="[{ id: 1, name: 'first' }, { id: 2, name: 'second' }, { id: 3, name: 'third' }, { id: 4, name: 'fourth' }, { id: 5, name: 'fifth' }, { id: 6, name: 'sixth' }, { id: 7, name: 'seventh' }, { id: 8, name: 'eight' }, { id: 9, name: 'nenth' }, { id: 10, name: 'tenth' }]"
     placeholder="direct options"
   >
     <template #:noResults>Es konnte kein Ergebnis gefunden werden.</template>
+    <template #:loading>Lädt...</template>
     <template #:error>Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.</template>
-  </AutoSearch>
+  </VueAutosearch>
 
   <br><br><br>
 
   selected result: {{ selectedSearchOption }}
   <hr>
-  <AutoSearch
+  <VueAutosearch
     v-model="selectedSearchOption"
     :searchFunction="searchFunction"
     :maxHeight="400"
@@ -23,12 +24,12 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import AutoSearch from './components/AutoSearch.vue';
+import VueAutosearch from './components/vue-autosearch.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    AutoSearch
+    VueAutosearch
   },
   setup() {
     const selectedOption = ref(null);

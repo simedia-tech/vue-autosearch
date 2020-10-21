@@ -198,7 +198,7 @@ export enum SearchState {
 }
 
 export default defineComponent({
-  name: "AutoSearch",
+  name: "vue-autosearch",
   props: {
     options: {
       type: Array as PropType<null | Option[]>,
@@ -277,9 +277,7 @@ export default defineComponent({
           message.value = result.message;
 
           searchState.value = SearchState.DONE;
-        } catch (error) {
-          console.error(error);
-
+        } catch {
           searchResults.value = [];
           searchState.value = SearchState.ERROR;
         }

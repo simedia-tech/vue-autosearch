@@ -1005,7 +1005,7 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/vue-autosearch.vue?vue&type=template&id=757dd508&bindings={}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/vue-autosearch.vue?vue&type=template&id=46d80c0b&bindings={}
 
 var _hoisted_1 = {
   class: "auto-select__wrapper"
@@ -1102,7 +1102,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* KEYED_FRAGMENT */
   )) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 2), [[external_commonjs_vue_commonjs2_vue_root_Vue_["vShow"], _ctx.showResults]])]);
 }
-// CONCATENATED MODULE: ./src/components/vue-autosearch.vue?vue&type=template&id=757dd508&bindings={}
+// CONCATENATED MODULE: ./src/components/vue-autosearch.vue?vue&type=template&id=46d80c0b&bindings={}
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
 var regenerator = __webpack_require__("a34a");
@@ -1174,6 +1174,7 @@ var SearchState;
         var elementBoundingClientRect = inputElement.value.getBoundingClientRect();
         var topDistance = elementBoundingClientRect.top;
         var bottomDistance = window.innerHeight - elementBoundingClientRect.bottom;
+        resultsElement.value.style.maxHeight = "".concat(maxHeight.value, "px");
 
         if (bottomDistance - 10 >= maxHeight.value) {
           showResultsDirection.value = Direction.DOWN;

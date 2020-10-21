@@ -236,6 +236,8 @@ export default defineComponent({
         const topDistance = elementBoundingClientRect.top;
         const bottomDistance = window.innerHeight - elementBoundingClientRect.bottom;
 
+        resultsElement.value.style.maxHeight = `${maxHeight.value}px`;
+
         if (bottomDistance - 10 >= maxHeight.value) {
           showResultsDirection.value = Direction.DOWN;
           resultsElement.value.style.bottom = "unset";

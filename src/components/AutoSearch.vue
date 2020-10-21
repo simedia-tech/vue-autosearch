@@ -1,3 +1,118 @@
+<style scoped lang="scss">
+.auto-select__wrapper {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+}
+
+.auto-select__input {
+  border: 1px solid lightgrey;
+  border-radius: 0.2rem;
+  box-sizing: border-box;
+  padding: 0.7rem;
+  padding-right: 0.7rem + 1rem + 0.7rem;
+  font-family: inherit;
+  font-size: 1rem;
+  width: 100%;
+
+  &:focus {
+    border-color: grey;
+    outline: none;
+  }
+
+  &--openDown {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &--openUp {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+.auto-select__loadingIndicator {
+  animation-name: pulse;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  box-sizing: border-box;
+  display: inline-block;
+  height: 0.5rem;
+  position: absolute;
+  left: 0.25rem;
+  top: 0.25rem;
+  width: 0.5rem;
+}
+
+.auto-select__clearSearch {
+  background-image: url("~@/assets/icons/close.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: calc(50% - 0.5rem);
+  right: 0.7rem;
+  height: 1rem;
+  position: absolute;
+  width: 1rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.auto-select__result {
+  background-color: #ffffff;
+  border: 1px solid lightgrey;
+  box-sizing: border-box;
+  position: absolute;
+  overflow-y: auto;
+  width: 100%;
+  z-index: 1;
+
+  &--down {
+    border-radius: 0 0 0.2rem 0.2rem;
+    border-top: unset;
+    margin-top: 0;
+  }
+
+  &--up {
+    border-radius: 0.2rem 0.2rem 0 0;
+    border-bottom: unset;
+  }
+}
+
+.auto-select__result__statusMessage {
+  padding: 1rem;
+}
+
+.auto-select__result__option {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  padding: 1rem;
+
+  &:hover {
+    background-color: lightgrey;
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.5);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+</style>
+
 <template>
   <div class="auto-select__wrapper">
     <input
@@ -16,15 +131,18 @@
       :value="modelValue ? modelValue.name : searchTerm"
       :placeholder="placeholder"
     >
+    
     <span
       v-if="searchState === SearchState.LOADING"
       class="auto-select__loadingIndicator"
     ></span>
+    
     <span
       v-if="searchTerm.length > 0 || (modelValue && modelValue.name.length > 0)"
       @click="searchTerm = ''; $emit('update:modelValue', null);"
       class="auto-select__clearSearch"
     ></span>
+
     <div
       ref="resultsElement"
       class="auto-select__result"
@@ -32,11 +150,16 @@
         'auto-select__result--down': showResultsDirection === Direction.DOWN,
         'auto-select__result--up': showResultsDirection === Direction.UP
       }"
-      v-if="showResults"
+      v-show="showResults"
     >
       <template v-if="searchState === SearchState.DONE && (searchResults && searchResults.length <= 0) && !message">
         <div class="auto-select__result__statusMessage">
           <slot name="noResults">No results found</slot>
+        </div>
+      </template>
+      <template v-if="searchState === SearchState.LOADING && (!searchResults || searchResults.length <= 0)">
+        <div class="auto-select__result__statusMessage">
+          <slot name="loading">Loading...</slot>
         </div>
       </template>
       <template v-else-if="searchState === SearchState.ERROR">
@@ -55,7 +178,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, ref, computed, PropType, ComputedRef, watch, Ref } from "vue";
+import { defineComponent, toRefs, ref, PropType, watch, Ref } from "vue";
 
 interface Option {
   id: number;
@@ -75,7 +198,7 @@ export enum SearchState {
 }
 
 export default defineComponent({
-  name: "AutoSelect",
+  name: "AutoSearch",
   props: {
     options: {
       type: Array as PropType<null | Option[]>,
@@ -90,7 +213,7 @@ export default defineComponent({
       default: 300
     },
     searchFunction: {
-      type: Function as PropType<null | ((searchTerm: string) => Promise<{ message: null| string; result?: Option[] }>)>,
+      type: Function as PropType<null | ((searchTerm: string) => Promise<{ message: null | string; result: null | Option[] }>)>,
       default: null
     },
     placeholder: {
@@ -105,7 +228,7 @@ export default defineComponent({
     const resultsElement: Ref<null | HTMLElement> = ref(null);
 
     const searchState = ref(SearchState.NONE);
-    const searchResults: Ref<undefined | Option[]> = ref([]);
+    const searchResults: Ref<null | Option[]> = ref([]);
     const message: Ref<null | string> = ref(null);
     const showResultsDirection = ref(Direction.DOWN);
     const showResults = ref(false);
@@ -191,119 +314,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style scoped lang="scss">
-.auto-select__wrapper {
-  box-sizing: border-box;
-  max-width: 30rem;
-  position: relative;
-  width: 100%;
-}
-
-.auto-select__input {
-  border: 1px solid lightgrey;
-  border-radius: 0.2rem;
-  box-sizing: border-box;
-  padding: 0.7rem;
-  padding-right: 0.7rem + 1rem + 0.7rem;
-  font-family: inherit;
-  font-size: 1rem;
-  width: 100%;
-
-  &:focus {
-    border-color: grey;
-    outline: none;
-  }
-
-  &--openDown {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  &--openUp {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-}
-
-.auto-select__loadingIndicator {
-  animation-name: pulse;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-  border: 2px solid #ccc;
-  border-radius: 50%;
-  box-sizing: border-box;
-  display: inline-block;
-  height: 0.5rem;
-  position: absolute;
-  left: 0.25rem;
-  top: 0.25rem;
-  width: 0.5rem;
-}
-
-.auto-select__clearSearch {
-  background-image: url("~@/assets/icons/close.svg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  top: calc(50% - 0.5rem);
-  right: 0.7rem;
-  height: 1rem;
-  position: absolute;
-  width: 1rem;
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
-.auto-select__result {
-  background-color: #ffffff;
-  border: 1px solid lightgrey;
-  box-sizing: border-box;
-  position: absolute;
-  max-height: 200px;
-  overflow-y: auto;
-  width: 100%;
-
-  &--down {
-    border-radius: 0 0 0.2rem 0.2rem;
-    border-top: unset;
-    margin-top: 0;
-  }
-
-  &--up {
-    border-radius: 0.2rem 0.2rem 0 0;
-    border-bottom: unset;
-  }
-}
-
-.auto-select__result__statusMessage {
-  padding: 1rem;
-}
-
-.auto-select__result__option {
-  box-sizing: border-box;
-  cursor: pointer;
-  display: block;
-  padding: 1rem;
-
-  &:hover {
-    background-color: lightgrey;
-  }
-}
-
-@keyframes pulse {
-  from {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(0.5);
-  }
-
-  to {
-    transform: scale(1);
-  }
-}
-</style>

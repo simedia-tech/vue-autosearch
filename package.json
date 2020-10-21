@@ -1,7 +1,12 @@
 {
-  "name": "auto-select",
+  "name": "vue-autosearch",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Ivan Sieder",
+    "email": "ivan@sieder.xyz",
+    "url": "https://simedia.tech"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",

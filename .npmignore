@@ -21,7 +21,6 @@ vue.config.js
 tsconfig.json
 package-lock.json
 babel.config.js
-.npmignore
 .gitignore
 .eslintrc.js.browserslistrc
 /sponsors

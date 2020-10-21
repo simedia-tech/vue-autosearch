@@ -2,6 +2,7 @@
 .auto-select__wrapper {
   box-sizing: border-box;
   position: relative;
+  text-align: left;
   width: 100%;
 }
 
@@ -86,7 +87,7 @@
   box-sizing: border-box;
   cursor: pointer;
   display: block;
-  padding: 1rem;
+  padding: 0.4rem;
 
   &:hover {
     background-color: lightgrey;

@@ -6,8 +6,60 @@ A Vue.js 3 component for synchronous and asynchronous autocomplete and search.
 - Works with synchronous options or custom search logic
 - Supports `v-model`
 - Customizable texts for different languages
-- Small footprint (~7KB minified + gzip)
+- Small footprint (~5KB minified + gzip)
 - Tree-shakable
+
+## Live Demos
+See [Examples](#Examples)
+
+## Installation
+Install Vue Autosearch as a NPM dependency or grab the latest version from the CDN.
+
+**NPM:**
+```shell
+# yarn
+yarn add vue-autosearch
+
+# npm
+npm i vue-autosearch
+```
+
+**CDN:**
+```javascript
+<script src="https://cdn.jsdelivr.net/npm/vue-autosearch"></script>
+```
+
+## Basic usage
+
+```vue
+<template>
+  <VueAutosearch
+    v-model="selectedOption"
+    v-bind:options="options"
+  />
+</template>
+
+<script>
+  import VueAutosearch from "vue-autosearch";
+
+  export default {
+    components: {
+      VueAutosearch
+    },
+    data() {
+      return {
+        selectedOption: null,
+        options: [
+          { id: 1, name: "Tesla Model S" },
+          { id: 2, name: "Tesla Model 3" }
+        ]
+      }
+    }
+  }
+</script>
+
+<style src="vue-autosearch/dist/vue-autosearch.css"></style>
+```
 
 ---
 
@@ -70,18 +122,25 @@ By default, if no results were found, the application is loading the search resu
 ## Examples
 
 ### Minimal version
+**[Live Demo](https://codesandbox.io/s/vueautosearch-minimal-version-fukop)**
+
 Renders an input form and as soon as the search input gets focussed, the user sees the results and can scroll and filter through them.
 
 ```vue
 <template>
-  <AutoSearch
+  <VueAutosearch
     v-model="selectedOption"
     v-bind:options="options"
   />
 </template>
 
 <script>
+  import VueAutosearch from "vue-autosearch";
+
   export default {
+    components: {
+      VueAutosearch
+    },
     data() {
       return {
         selectedOption: null,
@@ -93,23 +152,32 @@ Renders an input form and as soon as the search input gets focussed, the user se
     }
   }
 </script>
+
+<style src="vue-autosearch/dist/vue-autosearch.css"></style>
 ```
 
 ### Custom placeholder and custom maxHeight
+**[Live Demo](https://codesandbox.io/s/vueautosearch-custom-placeholder-and-custom-maxheight-k2nq8)**
+
 Same as the minimal version, but adds a custom placeholder text and changes the maximum height of the result box.
 
 ```vue
 <template>
-  <AutoSearch
+  <VueAutosearch
     v-model="selectedOption"
     v-bind:options="options"
-    placeholder="Type to filter results",
-    v-bind:maxHeight="400"
+    placeholder="Type to filter results"
+    v-bind:maxHeight="150"
   />
 </template>
 
 <script>
+  import VueAutosearch from "vue-autosearch";
+
   export default {
+    components: {
+      VueAutosearch
+    },
     data() {
       return {
         selectedOption: null,
@@ -121,25 +189,34 @@ Same as the minimal version, but adds a custom placeholder text and changes the 
     }
   }
 </script>
+
+<style src="vue-autosearch/dist/vue-autosearch.css"></style>
 ```
 
 ### Custom message texts
+**[Live demo](https://codesandbox.io/s/vueautosearch-custom-message-texts-gxl0x?file=/src/App.vue)**
+
 Same as the minimal version, but adds custom texts to be shown if no results were found or an error happened.
 
 ```vue
 <template>
-  <AutoSearch
+  <VueAutosearch
     v-model="selectedOption"
     v-bind:options="options"
   >
     <template v-slot:noResults>Custom message, if no results were found</template>
     <template v-slot:error>Custom message, if an error happened</template>
     <template v-slot:loading>Custom message, if the application is currently loading the results</template>
-  </AutoSearch>
+  </VueAutosearch>
 </template>
 
 <script>
+  import VueAutosearch from "vue-autosearch";
+
   export default {
+    components: {
+      VueAutosearch
+    },
     data() {
       return {
         selectedOption: null,
@@ -151,21 +228,31 @@ Same as the minimal version, but adds custom texts to be shown if no results wer
     }
   }
 </script>
+
+<style src="vue-autosearch/dist/vue-autosearch.css"></style>
 ```
 
 ### Custom search function
+**[Live demo](https://codesandbox.io/s/vueautosearch-custom-search-function-zb99b)**
+
 Use the searchFunction prop to handle custom search logic, debouncing and async calls.
 
 ```vue
 <template>
-  <AutoSearch
+  <VueAutosearch
     v-model="selectedOption"
     :searchFunction="searchFunction"
+    placeholder="Search for a city, country or palce"
   />
 </template>
 
 <script>
+  import VueAutosearch from "vue-autosearch";
+
   export default {
+    components: {
+      VueAutosearch
+    },
     data() {
       return {
         selectedOption: null,
@@ -173,9 +260,9 @@ Use the searchFunction prop to handle custom search logic, debouncing and async 
       }
     },
     methods: {
-      searchFunction(searchTerm: string) => {
+      searchFunction(searchTerm) {
         return new Promise((resolve) => {
-          if (searchTimeout) clearTimeout(searchTimeout);
+          if (this.searchTimeout) clearTimeout(this.searchTimeout);
 
           if (searchTerm.length < 3) {
             return resolve({
@@ -183,16 +270,18 @@ Use the searchFunction prop to handle custom search logic, debouncing and async 
             });
           }
 
-          searchTimeout = setTimeout(async () => {
-            const searchResults = (await (await fetch(`https://nominatim.openstreetmap.org/search.php?q=${searchTerm}&polygon_geojson=1&format=jsonv2`)).json()).map((result: { place_id: number; display_name: string }) => ({ id: result.place_id, name: result.display_name }));
+          this.searchTimeout = setTimeout(async () => {
+            const searchResults = (await (await fetch(`https://nominatim.openstreetmap.org/search.php?q=${searchTerm}&polygon_geojson=1&format=jsonv2`)).json()).map((result) => ({ id: result.place_id, name: result.display_name }));
 
             return resolve({
               result: searchResults
             })
           }, 500);
         });
-      };
+      }
     }
   }
 </script>
+
+<style src="vue-autosearch/dist/vue-autosearch.css"></style>
 ```

@@ -110,6 +110,11 @@ npm i vue-autosearch
 - example usage: `placeholder="enter to search"` or as property `v-bind:placeholder="myPlaceholder"`
 - defaults to an empty string
 
+### `disabled`
+- a boolean to specify, if the input field should be enabled or disabled
+- example usage: `v-bind:disabled="true"` or for example as computed property `v-bind:disabled="shouldBeDisabled"`
+- defaults to false (meaning that by default the input field will be enabled)
+
 ## Custom texts
 By default, if no results were found, the application is loading the search results or an error happened, the according message in English will be displayed ("No results found", "Loading..." and "An error happened, please try again" respectively). These texts can be overwritten for each single component by using slots. This is useful, if you have your app localized to different languages.
 

@@ -126,6 +126,7 @@
       @blur="showResults = false;"
       :value="modelValue ? modelValue.name : searchTerm"
       :placeholder="placeholder"
+      :disabled="disabled"
     >
     
     <span
@@ -215,6 +216,10 @@ export default defineComponent({
     placeholder: {
       type: String,
       default: ""
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props) {

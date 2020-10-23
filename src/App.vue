@@ -1,5 +1,6 @@
 <template>
-  selected result: {{ selectedOption }}
+<div>
+  <div>selected result: {{ selectedOption }}</div>
   <hr>
   <VueAutosearch
     v-model="selectedOption"
@@ -12,14 +13,22 @@
   </VueAutosearch>
 
   <br><br><br>
+  <VueAutosearch
+    v-model="disabledInputOption"
+    :options="[]"
+    placeholder="disabled input option"
+    :disabled="true"
+  />
+  <br><br><br>
 
-  selected result: {{ selectedSearchOption }}
+  <div>selected result: {{ selectedSearchOption }}</div>
   <hr>
   <VueAutosearch
     v-model="selectedSearchOption"
     :searchFunction="searchFunction"
     :maxHeight="400"
   />
+</div>
 </template>
 
 <script lang="ts">
@@ -33,6 +42,7 @@ export default defineComponent({
   },
   setup() {
     const selectedOption = ref(null);
+    const disabledInputOption = ref(null);
     const selectedSearchOption = ref(null);
 
     let searchTimeout: null | number = null;
@@ -63,6 +73,7 @@ export default defineComponent({
 
     return {
       selectedOption,
+      disabledInputOption,
       selectedSearchOption,
       options,
 

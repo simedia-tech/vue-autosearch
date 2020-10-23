@@ -8,6 +8,10 @@ News Priority:
 
 -->
 
+## 0.1.19 (2020-10-23)
+### Features
+- Added the `id` option to pass a custom id to the search input field
+
 ## 0.1.18 (2020-10-23)
 ### Features
 - Added the `disabled` option to conditionally enable/disable the search input field

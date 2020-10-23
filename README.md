@@ -105,6 +105,12 @@ npm i vue-autosearch
 - vue-autosearch automatically handles exceptions, where the searchFunction throws an error and quietly displays an error message inside the result box. You can also wrap your own searchFunction into a trycatch if you want to separately log the error. In any case make sure to throw the error after that in order to allow the component to propertly show an error message inside the vue-autosearch results box.
 - when passing a searchFunction, this function is responsible to return the results and therefor it's not allowed to pass in an options array along with a searchFunction
 
+### `id`
+- a string to be assigned to the `id` property of the search input field
+- example usage: `id="country_search"` or as property `v-bind:id="customIdProperty"`
+- no default, as it's an optional field
+- useful for example in combination with a label to focus the input when the label gets clicked
+
 ### `placeholder`
 - a string to be used as placeholder inside the search input
 - example usage: `placeholder="enter to search"` or as property `v-bind:placeholder="myPlaceholder"`

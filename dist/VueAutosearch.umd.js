@@ -1005,7 +1005,7 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/VueAutosearch.vue?vue&type=template&id=110c69f6&bindings={}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/VueAutosearch.vue?vue&type=template&id=98551cea&bindings={}
 
 var _hoisted_1 = {
   class: "auto-select__wrapper"
@@ -1066,8 +1066,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     value: _ctx.modelValue ? _ctx.modelValue.name : _ctx.searchTerm,
     placeholder: _ctx.placeholder,
-    disabled: _ctx.disabled
-  }, null, 42, ["value", "placeholder", "disabled"]), _ctx.searchState === _ctx.SearchState.LOADING ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("span", _hoisted_2)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.searchTerm.length > 0 || _ctx.modelValue && _ctx.modelValue.name.length > 0 ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("span", {
+    disabled: _ctx.disabled,
+    id: _ctx.id
+  }, null, 42, ["value", "placeholder", "disabled", "id"]), _ctx.searchState === _ctx.SearchState.LOADING ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("span", _hoisted_2)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.searchTerm.length > 0 || _ctx.modelValue && _ctx.modelValue.name.length > 0 ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("span", {
     key: 1,
     onClick: _cache[5] || (_cache[5] = function ($event) {
       _ctx.searchTerm = '';
@@ -1103,7 +1104,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* KEYED_FRAGMENT */
   )) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 2), [[external_commonjs_vue_commonjs2_vue_root_Vue_["vShow"], _ctx.showResults]])]);
 }
-// CONCATENATED MODULE: ./src/components/VueAutosearch.vue?vue&type=template&id=110c69f6&bindings={}
+// CONCATENATED MODULE: ./src/components/VueAutosearch.vue?vue&type=template&id=98551cea&bindings={}
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
 var regenerator = __webpack_require__("a34a");
@@ -1159,6 +1160,9 @@ var SearchState;
     disabled: {
       type: Boolean,
       default: false
+    },
+    id: {
+      type: String
     }
   },
   setup: function setup(props) {

@@ -6,6 +6,7 @@
     v-model="selectedOption"
     :options="options"
     placeholder="direct options"
+    id="myId"
   >
     <template #:noResults>Es konnte kein Ergebnis gefunden werden.</template>
     <template #:loading>Lädt...</template>

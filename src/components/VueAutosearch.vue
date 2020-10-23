@@ -127,6 +127,7 @@
       :value="modelValue ? modelValue.name : searchTerm"
       :placeholder="placeholder"
       :disabled="disabled"
+      :id="id"
     >
     
     <span
@@ -220,6 +221,9 @@ export default defineComponent({
     disabled: {
       type: Boolean,
       default: false
+    },
+    id: {
+      type: String
     }
   },
   setup(props) {

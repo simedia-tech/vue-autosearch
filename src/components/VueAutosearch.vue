@@ -122,7 +122,7 @@
       }"
       @focus="showResults = true"
       @click="showResults = true"
-      @input="showResults = true; $emit('update:modelValue', null); searchTerm = $event.target.value;"
+      @input="searchInputHandler"
       @blur="showResults = false;"
       :value="modelValue ? modelValue.name : searchTerm"
       :placeholder="placeholder"
@@ -176,7 +176,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, ref, PropType, watch, Ref } from "vue";
+import { defineComponent, toRefs, ref, PropType, watch, Ref, nextTick } from "vue";
 
 interface Option {
   id: number;
@@ -226,8 +226,8 @@ export default defineComponent({
       type: String
     }
   },
-  setup(props) {
-    const { options, maxHeight, searchFunction } = toRefs(props);
+  setup(props, { emit }) {
+    const { options, maxHeight, searchFunction, modelValue } = toRefs(props);
 
     const inputElement: Ref<null | HTMLElement> = ref(null);
     const resultsElement: Ref<null | HTMLElement> = ref(null);
@@ -272,6 +272,39 @@ export default defineComponent({
     });
 
     const searchTerm = ref("");
+    const searchInputHandler = async (event: InputEvent) => {
+      const inputElement = (event.target as HTMLInputElement);
+      const searchValue = inputElement.value;
+      const cursorPosition = inputElement.selectionStart ?? searchValue.length;
+
+      let manuallySetCurosrPosition = false;
+
+      showResults.value = true;
+
+      if (modelValue.value !== null) {
+        emit("update:modelValue", null);
+
+        // we need nextTick here, because we want to first reset the modelValue, wait till it's pushed down again from the parent
+        // and just after that update the searchTerm again. This is required, because we reset the modelValue and searchTerm
+        // as soon as the modelValue gets passed `null`, because if the parent clears the modelValue, we want to completely reset
+        // everything. But if the modelValue gets reset when the user has selected an entry and keeps typing, we want to set the 
+        // searcTerm again in order to not reset the field as soon as the user types.
+        await nextTick();
+        
+        // if the parent value gets reset, we await for the nextTick above and set the searchTerm just then, which would cause
+        // the cursor to jump to the end, if the user changes something in the middle of the textfield. Therefor we manually reset
+        // the cursor position if we await the nextTick.
+        manuallySetCurosrPosition = true;
+      }
+
+      searchTerm.value = searchValue;
+
+      if (manuallySetCurosrPosition === true) {
+        await nextTick();
+
+        inputElement.setSelectionRange(cursorPosition, cursorPosition);
+      }
+    };
     const filterAction = async () => {
       message.value = null;
 
@@ -305,6 +338,12 @@ export default defineComponent({
     watch(searchTerm, filterAction, { immediate: true });
     watch(options, filterAction, { immediate: true });
 
+    watch(modelValue, () => {
+      if (modelValue.value === null) {
+        searchTerm.value = "";
+      }
+    });
+
     return {
       inputElement,
       resultsElement,
@@ -318,6 +357,8 @@ export default defineComponent({
       searchState,
       showResults,
       showResultsDirection,
+
+      searchInputHandler,
     };
   }
 });

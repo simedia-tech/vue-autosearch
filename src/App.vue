@@ -12,6 +12,7 @@
     <template #:loading>Lädt...</template>
     <template #:error>Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.</template>
   </VueAutosearch>
+  <button @click="selectedOption = null">clear above</button>
 
   <br><br><br>
   <VueAutosearch

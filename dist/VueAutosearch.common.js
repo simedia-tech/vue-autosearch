@@ -996,7 +996,7 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/VueAutosearch.vue?vue&type=template&id=98551cea&bindings={}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/VueAutosearch.vue?vue&type=template&id=1d3fa460&bindings={}
 
 var _hoisted_1 = {
   class: "auto-select__wrapper"
@@ -1045,12 +1045,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[2] || (_cache[2] = function ($event) {
       return _ctx.showResults = true;
     }),
-    onInput: _cache[3] || (_cache[3] = function ($event) {
-      _ctx.showResults = true;
-
-      _ctx.$emit('update:modelValue', null);
-
-      _ctx.searchTerm = $event.target.value;
+    onInput: _cache[3] || (_cache[3] = function () {
+      return _ctx.searchInputHandler.apply(_ctx, arguments);
     }),
     onBlur: _cache[4] || (_cache[4] = function ($event) {
       _ctx.showResults = false;
@@ -1095,7 +1091,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* KEYED_FRAGMENT */
   )) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 2), [[external_commonjs_vue_commonjs2_vue_root_Vue_["vShow"], _ctx.showResults]])]);
 }
-// CONCATENATED MODULE: ./src/components/VueAutosearch.vue?vue&type=template&id=98551cea&bindings={}
+// CONCATENATED MODULE: ./src/components/VueAutosearch.vue?vue&type=template&id=1d3fa460&bindings={}
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
 var regenerator = __webpack_require__("a34a");
@@ -1156,11 +1152,14 @@ var SearchState;
       type: String
     }
   },
-  setup: function setup(props) {
+  setup: function setup(props, _ref) {
+    var emit = _ref.emit;
+
     var _toRefs = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toRefs"])(props),
         options = _toRefs.options,
         maxHeight = _toRefs.maxHeight,
-        searchFunction = _toRefs.searchFunction;
+        searchFunction = _toRefs.searchFunction,
+        modelValue = _toRefs.modelValue;
 
     var inputElement = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(null);
     var resultsElement = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(null);
@@ -1201,41 +1200,95 @@ var SearchState;
     });
     var searchTerm = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])("");
 
-    var filterAction = /*#__PURE__*/function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/regenerator_default.a.mark(function _callee() {
-        var result, optionsToReturn;
+    var searchInputHandler = /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regenerator_default.a.mark(function _callee(event) {
+        var _inputElement$selecti;
+
+        var inputElement, searchValue, cursorPosition, manuallySetCurosrPosition;
         return regenerator_default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                message.value = null;
+                inputElement = event.target;
+                searchValue = inputElement.value;
+                cursorPosition = (_inputElement$selecti = inputElement.selectionStart) !== null && _inputElement$selecti !== void 0 ? _inputElement$selecti : searchValue.length;
+                manuallySetCurosrPosition = false;
+                showResults.value = true;
 
-                if (!(searchFunction.value !== null && options.value === null)) {
-                  _context.next = 18;
+                if (!(modelValue.value !== null)) {
+                  _context.next = 10;
                   break;
                 }
 
-                _context.prev = 2;
+                emit("update:modelValue", null);
+                _context.next = 9;
+                return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["nextTick"])();
+
+              case 9:
+                manuallySetCurosrPosition = true;
+
+              case 10:
+                searchTerm.value = searchValue;
+
+                if (!(manuallySetCurosrPosition === true)) {
+                  _context.next = 15;
+                  break;
+                }
+
+                _context.next = 14;
+                return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["nextTick"])();
+
+              case 14:
+                inputElement.setSelectionRange(cursorPosition, cursorPosition);
+
+              case 15:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function searchInputHandler(_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }();
+
+    var filterAction = /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/regenerator_default.a.mark(function _callee2() {
+        var result, optionsToReturn;
+        return regenerator_default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                message.value = null;
+
+                if (!(searchFunction.value !== null && options.value === null)) {
+                  _context2.next = 18;
+                  break;
+                }
+
+                _context2.prev = 2;
                 searchState.value = SearchState.LOADING;
-                _context.next = 6;
+                _context2.next = 6;
                 return searchFunction.value(searchTerm.value);
 
               case 6:
-                result = _context.sent;
+                result = _context2.sent;
                 searchResults.value = result.result;
                 message.value = result.message;
                 searchState.value = SearchState.DONE;
-                _context.next = 16;
+                _context2.next = 16;
                 break;
 
               case 12:
-                _context.prev = 12;
-                _context.t0 = _context["catch"](2);
+                _context2.prev = 12;
+                _context2.t0 = _context2["catch"](2);
                 searchResults.value = [];
                 searchState.value = SearchState.ERROR;
 
               case 16:
-                _context.next = 19;
+                _context2.next = 19;
                 break;
 
               case 18:
@@ -1254,14 +1307,14 @@ var SearchState;
 
               case 19:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee, null, [[2, 12]]);
+        }, _callee2, null, [[2, 12]]);
       }));
 
       return function filterAction() {
-        return _ref.apply(this, arguments);
+        return _ref3.apply(this, arguments);
       };
     }();
 
@@ -1270,6 +1323,11 @@ var SearchState;
     });
     Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watch"])(options, filterAction, {
       immediate: true
+    });
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watch"])(modelValue, function () {
+      if (modelValue.value === null) {
+        searchTerm.value = "";
+      }
     });
     return {
       inputElement: inputElement,
@@ -1281,7 +1339,8 @@ var SearchState;
       searchResults: searchResults,
       searchState: searchState,
       showResults: showResults,
-      showResultsDirection: showResultsDirection
+      showResultsDirection: showResultsDirection,
+      searchInputHandler: searchInputHandler
     };
   }
 }));

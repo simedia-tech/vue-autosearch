@@ -1,12 +1,12 @@
 <style lang="scss">
-.auto-select__wrapper {
+.autosearch__wrapper {
   box-sizing: border-box;
   position: relative;
   text-align: left;
   width: 100%;
 }
 
-.auto-select__input {
+.autosearch__input {
   border: 1px solid lightgrey;
   border-radius: 0.2rem;
   box-sizing: border-box;
@@ -27,7 +27,7 @@
   }
 }
 
-.auto-select__loadingIndicator {
+.autosearch__loadingIndicator {
   animation-name: pulse;
   animation-duration: 1s;
   animation-iteration-count: infinite;
@@ -42,7 +42,7 @@
   width: 0.4rem;
 }
 
-.auto-select__clearSearch {
+.autosearch__clearSearch {
   background-image: url("~@/assets/icons/close.svg");
   background-position: center;
   background-size: contain;
@@ -58,7 +58,7 @@
   }
 }
 
-.auto-select__result {
+.autosearch__result {
   background-color: #ffffff;
   border: 1px solid lightgrey;
   box-sizing: border-box;
@@ -79,11 +79,11 @@
   }
 }
 
-.auto-select__result__statusMessage {
+.autosearch__result__statusMessage {
   padding: 1rem;
 }
 
-.auto-select__result__option {
+.autosearch__result__option {
   box-sizing: border-box;
   cursor: pointer;
   display: block;
@@ -110,15 +110,15 @@
 </style>
 
 <template>
-  <div class="auto-select__wrapper">
+  <div class="autosearch__wrapper">
     <input
       ref="inputElement"
       type="text"
       autocomplete="off"
-      class="auto-select__input"
+      class="autosearch__input"
       :class="{
-        'auto-select__input--openDown': showResults && showResultsDirection === Direction.DOWN,
-        'auto-select__input--openUp': showResults && showResultsDirection === Direction.UP
+        'autosearch__input--openDown': showResults && showResultsDirection === Direction.DOWN,
+        'autosearch__input--openUp': showResults && showResultsDirection === Direction.UP
       }"
       @focus="showResults = true"
       @click="showResults = true"
@@ -132,44 +132,44 @@
     
     <span
       v-if="searchState === SearchState.LOADING"
-      class="auto-select__loadingIndicator"
+      class="autosearch__loadingIndicator"
     ></span>
     
     <span
       v-if="searchTerm.length > 0 || (modelValue && modelValue.name.length > 0)"
       @click="searchTerm = ''; $emit('update:modelValue', null);"
-      class="auto-select__clearSearch"
+      class="autosearch__clearSearch"
     ></span>
 
     <div
       ref="resultsElement"
-      class="auto-select__result"
+      class="autosearch__result"
       :class="{
-        'auto-select__result--down': showResultsDirection === Direction.DOWN,
-        'auto-select__result--up': showResultsDirection === Direction.UP
+        'autosearch__result--down': showResultsDirection === Direction.DOWN,
+        'autosearch__result--up': showResultsDirection === Direction.UP
       }"
       v-show="showResults"
     >
       <template v-if="searchState === SearchState.DONE && (searchResults && searchResults.length <= 0) && !message">
-        <div class="auto-select__result__statusMessage">
+        <div class="autosearch__result__statusMessage">
           <slot name="noResults">No results found</slot>
         </div>
       </template>
       <template v-if="searchState === SearchState.LOADING && (!searchResults || searchResults.length <= 0)">
-        <div class="auto-select__result__statusMessage">
+        <div class="autosearch__result__statusMessage">
           <slot name="loading">Loading...</slot>
         </div>
       </template>
       <template v-else-if="searchState === SearchState.ERROR">
-        <div class="auto-select__result__statusMessage">
+        <div class="autosearch__result__statusMessage">
           <slot name="error">An error happened, please try again</slot>
         </div>
       </template>
       <template v-else-if="searchState === SearchState.DONE && message">
-        <div class="auto-select__result__statusMessage">{{ message }}</div>
+        <div class="autosearch__result__statusMessage">{{ message }}</div>
       </template>
       <template v-if="(searchState === SearchState.DONE || searchState === SearchState.LOADING) && (searchResults && searchResults.length > 0)">
-        <a v-for="option in searchResults" :key="option.id" class="auto-select__result__option" @mousedown.prevent="$emit('update:modelValue', option); showResults = false;">{{ option.name }}</a>
+        <a v-for="option in searchResults" :key="option.id" class="autosearch__result__option" @mousedown.prevent="$emit('update:modelValue', option); showResults = false;">{{ option.name }}</a>
       </template>
     </div>
   </div>

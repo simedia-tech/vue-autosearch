@@ -8,6 +8,10 @@ News Priority:
 
 -->
 
+## 0.1.21 (2020-10-24)
+### Bug Fixes
+- Changed styles from old name (auto-select) to new name (autosearch)
+
 ## 0.1.20 (2020-10-24)
 ### Bug Fixes
 - When the property passed to v-model got reset from outside the component, the searchTerm didn't reset properly

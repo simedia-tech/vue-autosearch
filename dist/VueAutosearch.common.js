@@ -996,48 +996,48 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/VueAutosearch.vue?vue&type=template&id=1d3fa460&bindings={}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/VueAutosearch.vue?vue&type=template&id=45bc5f2f&bindings={}
 
 var _hoisted_1 = {
-  class: "auto-select__wrapper"
+  class: "autosearch__wrapper"
 };
 var _hoisted_2 = {
   key: 0,
-  class: "auto-select__loadingIndicator"
+  class: "autosearch__loadingIndicator"
 };
 var _hoisted_3 = {
   key: 0,
-  class: "auto-select__result__statusMessage"
+  class: "autosearch__result__statusMessage"
 };
 
 var _hoisted_4 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])("No results found");
 
 var _hoisted_5 = {
   key: 1,
-  class: "auto-select__result__statusMessage"
+  class: "autosearch__result__statusMessage"
 };
 
 var _hoisted_6 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])("Loading...");
 
 var _hoisted_7 = {
   key: 2,
-  class: "auto-select__result__statusMessage"
+  class: "autosearch__result__statusMessage"
 };
 
 var _hoisted_8 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])("An error happened, please try again");
 
 var _hoisted_9 = {
   key: 3,
-  class: "auto-select__result__statusMessage"
+  class: "autosearch__result__statusMessage"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", _hoisted_1, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("input", {
     ref: "inputElement",
     type: "text",
     autocomplete: "off",
-    class: ["auto-select__input", {
-      'auto-select__input--openDown': _ctx.showResults && _ctx.showResultsDirection === _ctx.Direction.DOWN,
-      'auto-select__input--openUp': _ctx.showResults && _ctx.showResultsDirection === _ctx.Direction.UP
+    class: ["autosearch__input", {
+      'autosearch__input--openDown': _ctx.showResults && _ctx.showResultsDirection === _ctx.Direction.DOWN,
+      'autosearch__input--openUp': _ctx.showResults && _ctx.showResultsDirection === _ctx.Direction.UP
     }],
     onFocus: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.showResults = true;
@@ -1062,12 +1062,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       _ctx.$emit('update:modelValue', null);
     }),
-    class: "auto-select__clearSearch"
+    class: "autosearch__clearSearch"
   })) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withDirectives"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", {
     ref: "resultsElement",
-    class: ["auto-select__result", {
-      'auto-select__result--down': _ctx.showResultsDirection === _ctx.Direction.DOWN,
-      'auto-select__result--up': _ctx.showResultsDirection === _ctx.Direction.UP
+    class: ["autosearch__result", {
+      'autosearch__result--down': _ctx.showResultsDirection === _ctx.Direction.DOWN,
+      'autosearch__result--up': _ctx.showResultsDirection === _ctx.Direction.UP
     }]
   }, [_ctx.searchState === _ctx.SearchState.DONE && _ctx.searchResults && _ctx.searchResults.length <= 0 && !_ctx.message ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", _hoisted_3, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderSlot"])(_ctx.$slots, "noResults", {}, function () {
     return [_hoisted_4];
@@ -1080,7 +1080,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderList"])(_ctx.searchResults, function (option) {
     return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("a", {
       key: option.id,
-      class: "auto-select__result__option",
+      class: "autosearch__result__option",
       onMousedown: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withModifiers"])(function ($event) {
         _ctx.$emit('update:modelValue', option);
 
@@ -1091,7 +1091,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* KEYED_FRAGMENT */
   )) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 2), [[external_commonjs_vue_commonjs2_vue_root_Vue_["vShow"], _ctx.showResults]])]);
 }
-// CONCATENATED MODULE: ./src/components/VueAutosearch.vue?vue&type=template&id=1d3fa460&bindings={}
+// CONCATENATED MODULE: ./src/components/VueAutosearch.vue?vue&type=template&id=45bc5f2f&bindings={}
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
 var regenerator = __webpack_require__("a34a");

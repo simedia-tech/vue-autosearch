@@ -43,7 +43,7 @@
 }
 
 .autosearch__clearSearch {
-  background-image: url("~@/assets/icons/close.svg");
+  background-image: url("../assets/icons/close.svg");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;

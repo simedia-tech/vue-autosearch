@@ -8,6 +8,10 @@ News Priority:
 
 -->
 
+## 0.1.22 (2020-10-25)
+### Bug Fixes
+- Changed the background url for the close button so that the css file can also be imported directly inside the script tag
+
 ## 0.1.21 (2020-10-24)
 ### Bug Fixes
 - Changed styles from old name (auto-select) to new name (autosearch)

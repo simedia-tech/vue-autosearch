@@ -10,7 +10,7 @@ A Vue.js 3 component for synchronous and asynchronous autocomplete and search.
 - Tree-shakable
 
 ## Live Demos
-See [Examples](#Examples)
+See [Examples](#examples)
 
 ## Installation
 Install Vue Autosearch as a NPM dependency or grab the latest version from the CDN.

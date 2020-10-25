@@ -43,7 +43,7 @@
 }
 
 .autosearch__clearSearch {
-  background-image: url("../assets/icons/close.svg");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 409.81 409.81'><defs/><path fill='%23aaa' d='M228.93 205.01L404.6 29.34c6.78-6.548 6.968-17.352.42-24.132s-17.352-6.968-24.132-.42c-.142.137-.282.277-.42.42l-175.67 175.67L29.128 5.208c-6.78-6.548-17.584-6.36-24.132.42-6.388 6.614-6.388 17.099 0 23.713l175.67 175.67-175.67 175.67c-6.663 6.664-6.663 17.468 0 24.132 6.664 6.662 17.468 6.662 24.132 0l175.67-175.67 175.67 175.67c6.78 6.548 17.584 6.36 24.132-.42 6.387-6.614 6.387-17.099 0-23.712l-175.67-175.67z' class='active-path' data-old_color='%23000000' data-original='%23000000'/></svg>");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;

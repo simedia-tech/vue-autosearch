@@ -8,6 +8,10 @@ News Priority:
 
 -->
 
+## 0.1.23 (2020-10-25)
+### Bug Fixes
+- Inlined close icon svg in order to be able to import the css file from anywhere
+
 ## 0.1.22 (2020-10-25)
 ### Bug Fixes
 - Changed the background url for the close button so that the css file can also be imported directly inside the script tag

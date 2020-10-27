@@ -8,6 +8,10 @@ News Priority:
 
 -->
 
+## 0.1.24 (2020-10-27)
+### Bug Fixes
+- If the border-radius for the input gets overwritten manually, the border-radius in the correct direction doesn't get removed, when the search results become visible
+
 ## 0.1.23 (2020-10-25)
 ### Bug Fixes
 - Inlined close icon svg in order to be able to import the css file from anywhere

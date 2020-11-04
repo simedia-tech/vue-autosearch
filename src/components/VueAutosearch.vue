@@ -227,7 +227,7 @@ export default defineComponent({
     }
   },
   setup(props, { emit }) {
-    const { options, maxHeight, searchFunction, modelValue } = toRefs(props);
+    const { options, maxHeight, searchFunction, modelValue, disabled } = toRefs(props);
 
     const inputElement: Ref<null | HTMLElement> = ref(null);
     const resultsElement: Ref<null | HTMLElement> = ref(null);
@@ -338,11 +338,14 @@ export default defineComponent({
     watch(searchTerm, filterAction, { immediate: true });
     watch(options, filterAction, { immediate: true });
 
-    watch(modelValue, () => {
+    const resetSearch = () => {
       if (modelValue.value === null) {
         searchTerm.value = "";
       }
-    });
+    };
+
+    watch(modelValue, resetSearch);
+    watch(disabled, resetSearch);
 
     return {
       inputElement,

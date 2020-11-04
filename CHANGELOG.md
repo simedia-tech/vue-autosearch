@@ -8,6 +8,10 @@ News Priority:
 
 -->
 
+## 0.1.25 (2020-11-04)
+### Breaking Changes
+- When component gets disabled and the modelValue is not set, the searchTerm will also be reset
+
 ## 0.1.24 (2020-10-27)
 ### Bug Fixes
 - If the border-radius for the input gets overwritten manually, the border-radius in the correct direction doesn't get removed, when the search results become visible

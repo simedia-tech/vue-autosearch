@@ -1005,7 +1005,7 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/VueAutosearch.vue?vue&type=template&id=9a45a032&bindings={}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/VueAutosearch.vue?vue&type=template&id=0cec19e4&bindings={}
 
 var _hoisted_1 = {
   class: "autosearch__wrapper"
@@ -1100,7 +1100,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* KEYED_FRAGMENT */
   )) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 2), [[external_commonjs_vue_commonjs2_vue_root_Vue_["vShow"], _ctx.showResults]])]);
 }
-// CONCATENATED MODULE: ./src/components/VueAutosearch.vue?vue&type=template&id=9a45a032&bindings={}
+// CONCATENATED MODULE: ./src/components/VueAutosearch.vue?vue&type=template&id=0cec19e4&bindings={}
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
 var regenerator = __webpack_require__("a34a");
@@ -1168,7 +1168,8 @@ var SearchState;
         options = _toRefs.options,
         maxHeight = _toRefs.maxHeight,
         searchFunction = _toRefs.searchFunction,
-        modelValue = _toRefs.modelValue;
+        modelValue = _toRefs.modelValue,
+        disabled = _toRefs.disabled;
 
     var inputElement = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(null);
     var resultsElement = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["ref"])(null);
@@ -1333,11 +1334,15 @@ var SearchState;
     Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watch"])(options, filterAction, {
       immediate: true
     });
-    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watch"])(modelValue, function () {
+
+    var resetSearch = function resetSearch() {
       if (modelValue.value === null) {
         searchTerm.value = "";
       }
-    });
+    };
+
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watch"])(modelValue, resetSearch);
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["watch"])(disabled, resetSearch);
     return {
       inputElement: inputElement,
       resultsElement: resultsElement,

@@ -250,7 +250,12 @@ export default defineComponent({
   },
   emits: {
     ["update:modelValue"]: (payload: null | Option) => {
-      return payload === null || (payload.id && payload.name);
+      if (payload === null || (payload.id && payload.name)) {
+        return true;
+      } else {
+        console.warn("Invalid update:modelValue event payload!");
+        return false;
+      }
     },
   },
   setup(props, { emit }) {

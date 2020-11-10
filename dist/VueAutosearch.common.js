@@ -996,7 +996,7 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/VueAutosearch.vue?vue&type=template&id=0cec19e4&bindings={}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/components/VueAutosearch.vue?vue&type=template&id=e9fea232&bindings={}
 
 var _hoisted_1 = {
   class: "autosearch__wrapper"
@@ -1010,21 +1010,21 @@ var _hoisted_3 = {
   class: "autosearch__result__statusMessage"
 };
 
-var _hoisted_4 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])("No results found");
+var _hoisted_4 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])(" No results found ");
 
 var _hoisted_5 = {
   key: 1,
   class: "autosearch__result__statusMessage"
 };
 
-var _hoisted_6 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])("Loading...");
+var _hoisted_6 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])(" Loading... ");
 
 var _hoisted_7 = {
   key: 2,
   class: "autosearch__result__statusMessage"
 };
 
-var _hoisted_8 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])("An error happened, please try again");
+var _hoisted_8 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])(" An error happened, please try again ");
 
 var _hoisted_9 = {
   key: 3,
@@ -1032,6 +1032,7 @@ var _hoisted_9 = {
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", _hoisted_1, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("input", {
+    id: _ctx.id,
     ref: "inputElement",
     type: "text",
     autocomplete: "off",
@@ -1039,6 +1040,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       'autosearch__input--openDown': _ctx.showResults && _ctx.showResultsDirection === _ctx.Direction.DOWN,
       'autosearch__input--openUp': _ctx.showResults && _ctx.showResultsDirection === _ctx.Direction.UP
     }],
+    value: _ctx.modelValue ? _ctx.modelValue.name : _ctx.searchTerm,
+    placeholder: _ctx.placeholder,
+    disabled: _ctx.disabled,
     onFocus: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.showResults = true;
     }),
@@ -1050,19 +1054,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     onBlur: _cache[4] || (_cache[4] = function ($event) {
       _ctx.showResults = false;
-    }),
-    value: _ctx.modelValue ? _ctx.modelValue.name : _ctx.searchTerm,
-    placeholder: _ctx.placeholder,
-    disabled: _ctx.disabled,
-    id: _ctx.id
-  }, null, 42, ["value", "placeholder", "disabled", "id"]), _ctx.searchState === _ctx.SearchState.LOADING ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("span", _hoisted_2)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.searchTerm.length > 0 || _ctx.modelValue && _ctx.modelValue.name.length > 0 ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("span", {
+    })
+  }, null, 42, ["id", "value", "placeholder", "disabled"]), _ctx.searchState === _ctx.SearchState.LOADING ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("span", _hoisted_2)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.searchTerm.length > 0 || _ctx.modelValue && _ctx.modelValue.name.length > 0 ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("span", {
     key: 1,
+    class: "autosearch__clearSearch",
     onClick: _cache[5] || (_cache[5] = function ($event) {
       _ctx.searchTerm = '';
 
       _ctx.$emit('update:modelValue', null);
-    }),
-    class: "autosearch__clearSearch"
+    })
   })) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withDirectives"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", {
     ref: "resultsElement",
     class: ["autosearch__result", {
@@ -1091,7 +1091,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* KEYED_FRAGMENT */
   )) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 2), [[external_commonjs_vue_commonjs2_vue_root_Vue_["vShow"], _ctx.showResults]])]);
 }
-// CONCATENATED MODULE: ./src/components/VueAutosearch.vue?vue&type=template&id=0cec19e4&bindings={}
+// CONCATENATED MODULE: ./src/components/VueAutosearch.vue?vue&type=template&id=e9fea232&bindings={}
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
 var regenerator = __webpack_require__("a34a");
@@ -1103,6 +1103,8 @@ var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 var Direction;
@@ -1149,9 +1151,13 @@ var SearchState;
       default: false
     },
     id: {
-      type: String
+      type: String,
+      default: null
     }
   },
+  emits: _defineProperty({}, "update:modelValue", function updateModelValue(payload) {
+    return payload === null || payload.id && payload.name;
+  }),
   setup: function setup(props, _ref) {
     var emit = _ref.emit;
 
@@ -1205,7 +1211,7 @@ var SearchState;
       var _ref2 = _asyncToGenerator( /*#__PURE__*/regenerator_default.a.mark(function _callee(event) {
         var _inputElement$selecti;
 
-        var inputElement, searchValue, cursorPosition, manuallySetCurosrPosition;
+        var inputElement, searchValue, cursorPosition, manuallySetCursorPosition;
         return regenerator_default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -1213,7 +1219,7 @@ var SearchState;
                 inputElement = event.target;
                 searchValue = inputElement.value;
                 cursorPosition = (_inputElement$selecti = inputElement.selectionStart) !== null && _inputElement$selecti !== void 0 ? _inputElement$selecti : searchValue.length;
-                manuallySetCurosrPosition = false;
+                manuallySetCursorPosition = false;
                 showResults.value = true;
 
                 if (!(modelValue.value !== null)) {
@@ -1226,12 +1232,12 @@ var SearchState;
                 return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["nextTick"])();
 
               case 9:
-                manuallySetCurosrPosition = true;
+                manuallySetCursorPosition = true;
 
               case 10:
                 searchTerm.value = searchValue;
 
-                if (!(manuallySetCurosrPosition === true)) {
+                if (!(manuallySetCursorPosition === true)) {
                   _context.next = 15;
                   break;
                 }

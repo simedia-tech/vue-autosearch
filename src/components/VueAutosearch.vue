@@ -8,12 +8,12 @@
 
 .autosearch__input {
   border: 1px solid lightgrey;
-  border-radius: 0.2rem;
+  border-radius: 0.2em;
   box-sizing: border-box;
   font-family: inherit;
-  font-size: 1rem;
-  padding: 0.4rem;
-  padding-right: 0.4rem + 1rem + 0.4rem;
+  font-size: 1em;
+  padding: 0.4em;
+  padding-right: 0.4em + 1em + 0.4em;
   width: 100%;
 
   &--openDown {
@@ -35,11 +35,11 @@
   border-radius: 50%;
   box-sizing: border-box;
   display: inline-block;
-  height: 0.4rem;
+  height: 0.4em;
   position: absolute;
-  left: 0.2rem;
-  top: 0.2rem;
-  width: 0.4rem;
+  left: 0.2em;
+  top: 0.2em;
+  width: 0.4em;
 }
 
 .autosearch__clearSearch {
@@ -47,11 +47,11 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  top: calc(50% - 0.5rem);
-  right: 0.4rem;
-  height: 1rem;
+  top: calc(50% - 0.5em);
+  right: 0.4em;
+  height: 1em;
   position: absolute;
-  width: 1rem;
+  width: 1em;
 
   &:hover {
     cursor: pointer;
@@ -68,26 +68,26 @@
   z-index: 1;
 
   &--down {
-    border-radius: 0 0 0.2rem 0.2rem;
+    border-radius: 0 0 0.2em 0.2em;
     border-top: unset;
     margin-top: 0;
   }
 
   &--up {
-    border-radius: 0.2rem 0.2rem 0 0;
+    border-radius: 0.2em 0.2em 0 0;
     border-bottom: unset;
   }
 }
 
 .autosearch__result__statusMessage {
-  padding: 1rem;
+  padding: 1em;
 }
 
 .autosearch__result__option {
   box-sizing: border-box;
   cursor: pointer;
   display: block;
-  padding: 0.4rem;
+  padding: 0.4em;
 
   &:hover {
     background-color: lightgrey;
@@ -112,6 +112,7 @@
 <template>
   <div class="autosearch__wrapper">
     <input
+      :id="id"
       ref="inputElement"
       type="text"
       autocomplete="off"
@@ -120,56 +121,76 @@
         'autosearch__input--openDown': showResults && showResultsDirection === Direction.DOWN,
         'autosearch__input--openUp': showResults && showResultsDirection === Direction.UP
       }"
+      :value="modelValue ? modelValue.name : searchTerm"
+      :placeholder="placeholder"
+      :disabled="disabled"
       @focus="showResults = true"
       @click="showResults = true"
       @input="searchInputHandler"
       @blur="showResults = false;"
-      :value="modelValue ? modelValue.name : searchTerm"
-      :placeholder="placeholder"
-      :disabled="disabled"
-      :id="id"
     >
     
     <span
       v-if="searchState === SearchState.LOADING"
       class="autosearch__loadingIndicator"
-    ></span>
+    />
     
     <span
       v-if="searchTerm.length > 0 || (modelValue && modelValue.name.length > 0)"
-      @click="searchTerm = ''; $emit('update:modelValue', null);"
       class="autosearch__clearSearch"
-    ></span>
+      @click="searchTerm = ''; $emit('update:modelValue', null);"
+    />
 
     <div
+      v-show="showResults"
       ref="resultsElement"
       class="autosearch__result"
       :class="{
         'autosearch__result--down': showResultsDirection === Direction.DOWN,
         'autosearch__result--up': showResultsDirection === Direction.UP
       }"
-      v-show="showResults"
     >
-      <template v-if="searchState === SearchState.DONE && (searchResults && searchResults.length <= 0) && !message">
-        <div class="autosearch__result__statusMessage">
-          <slot name="noResults">No results found</slot>
-        </div>
-      </template>
-      <template v-if="searchState === SearchState.LOADING && (!searchResults || searchResults.length <= 0)">
-        <div class="autosearch__result__statusMessage">
-          <slot name="loading">Loading...</slot>
-        </div>
-      </template>
-      <template v-else-if="searchState === SearchState.ERROR">
-        <div class="autosearch__result__statusMessage">
-          <slot name="error">An error happened, please try again</slot>
-        </div>
-      </template>
-      <template v-else-if="searchState === SearchState.DONE && message">
-        <div class="autosearch__result__statusMessage">{{ message }}</div>
-      </template>
+      <div
+        v-if="searchState === SearchState.DONE && (searchResults && searchResults.length <= 0) && !message"
+        class="autosearch__result__statusMessage"
+      >
+        <slot name="noResults">
+          No results found
+        </slot>
+      </div>
+      
+      <div
+        v-if="searchState === SearchState.LOADING && (!searchResults || searchResults.length <= 0)"
+        class="autosearch__result__statusMessage"
+      >
+        <slot name="loading">
+          Loading...
+        </slot>
+      </div>
+
+      <div
+        v-else-if="searchState === SearchState.ERROR"
+        class="autosearch__result__statusMessage"
+      >
+        <slot name="error">
+          An error happened, please try again
+        </slot>
+      </div>
+
+      <div
+        v-else-if="searchState === SearchState.DONE && message"
+        class="autosearch__result__statusMessage"
+      >
+        {{ message }}
+      </div>
+
       <template v-if="(searchState === SearchState.DONE || searchState === SearchState.LOADING) && (searchResults && searchResults.length > 0)">
-        <a v-for="option in searchResults" :key="option.id" class="autosearch__result__option" @mousedown.prevent="$emit('update:modelValue', option); showResults = false;">{{ option.name }}</a>
+        <a
+          v-for="option in searchResults"
+          :key="option.id"
+          class="autosearch__result__option"
+          @mousedown.prevent="$emit('update:modelValue', option); showResults = false;"
+        >{{ option.name }}</a>
       </template>
     </div>
   </div>
@@ -223,8 +244,14 @@ export default defineComponent({
       default: false
     },
     id: {
-      type: String
+      type: String,
+      default: null
     }
+  },
+  emits: {
+    ["update:modelValue"]: (payload: null | Option) => {
+      return payload === null || (payload.id && payload.name);
+    },
   },
   setup(props, { emit }) {
     const { options, maxHeight, searchFunction, modelValue, disabled } = toRefs(props);
@@ -277,7 +304,7 @@ export default defineComponent({
       const searchValue = inputElement.value;
       const cursorPosition = inputElement.selectionStart ?? searchValue.length;
 
-      let manuallySetCurosrPosition = false;
+      let manuallySetCursorPosition = false;
 
       showResults.value = true;
 
@@ -288,18 +315,18 @@ export default defineComponent({
         // and just after that update the searchTerm again. This is required, because we reset the modelValue and searchTerm
         // as soon as the modelValue gets passed `null`, because if the parent clears the modelValue, we want to completely reset
         // everything. But if the modelValue gets reset when the user has selected an entry and keeps typing, we want to set the 
-        // searcTerm again in order to not reset the field as soon as the user types.
+        // searchTerm again in order to not reset the field as soon as the user types.
         await nextTick();
         
         // if the parent value gets reset, we await for the nextTick above and set the searchTerm just then, which would cause
         // the cursor to jump to the end, if the user changes something in the middle of the textfield. Therefor we manually reset
         // the cursor position if we await the nextTick.
-        manuallySetCurosrPosition = true;
+        manuallySetCursorPosition = true;
       }
 
       searchTerm.value = searchValue;
 
-      if (manuallySetCurosrPosition === true) {
+      if (manuallySetCursorPosition === true) {
         await nextTick();
 
         inputElement.setSelectionRange(cursorPosition, cursorPosition);

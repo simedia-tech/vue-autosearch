@@ -8,6 +8,10 @@ News Priority:
 
 -->
 
+## 0.1.26 (2020-11-10)
+### Breaking Changes
+- Changed `rem` to `em` as it's better stylable this way.
+
 ## 0.1.25 (2020-11-04)
 ### Breaking Changes
 - When component gets disabled and the modelValue is not set, the searchTerm will also be reset

@@ -1,36 +1,53 @@
+<style lang="scss">
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+}
+</style>
+
 <template>
-<div>
-  <div>selected result: {{ selectedOption }}</div>
-  <hr>
-  <VueAutosearch
-    v-model="selectedOption"
-    :options="options"
-    placeholder="direct options"
-    id="myId"
-  >
-    <template #:noResults>Es konnte kein Ergebnis gefunden werden.</template>
-    <template #:loading>Lädt...</template>
-    <template #:error>Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.</template>
-  </VueAutosearch>
-  <button @click="selectedOption = null">clear above</button>
+  <div>
+    <div>selected result: {{ selectedOption }}</div>
+    <hr>
+    <VueAutosearch
+      id="myId"
+      v-model="selectedOption"
+      :options="options"
+      placeholder="direct options"
+    >
+      <template #:noResults>
+        Es konnte kein Ergebnis gefunden werden.
+      </template>
+      <template #:loading>
+        Lädt...
+      </template>
+      <template #:error>
+        Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.
+      </template>
+    </VueAutosearch>
+    <button @click="selectedOption = null">
+      clear above
+    </button>
 
-  <br><br><br>
-  <VueAutosearch
-    v-model="disabledInputOption"
-    :options="[]"
-    placeholder="disabled input option"
-    :disabled="true"
-  />
-  <br><br><br>
+    <br><br><br>
+    <VueAutosearch
+      v-model="disabledInputOption"
+      :options="[]"
+      placeholder="disabled input option"
+      :disabled="true"
+    />
+    <br><br><br>
 
-  <div>selected result: {{ selectedSearchOption }}</div>
-  <hr>
-  <VueAutosearch
-    v-model="selectedSearchOption"
-    :searchFunction="searchFunction"
-    :maxHeight="400"
-  />
-</div>
+    <div>selected result: {{ selectedSearchOption }}</div>
+    <hr>
+    <VueAutosearch
+      v-model="selectedSearchOption"
+      :search-function="searchFunction"
+      :max-height="400"
+    />
+  </div>
 </template>
 
 <script lang="ts">
@@ -84,12 +101,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-</style>

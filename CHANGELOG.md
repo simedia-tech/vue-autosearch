@@ -8,6 +8,10 @@ News Priority:
 
 -->
 
+## 0.1.27 (2020-12-11)
+### Improvements
+- Changed `rem` to `em` as it's better stylable this way.
+
 ## 0.1.26 (2020-11-10)
 ### Breaking Changes
 - Changed `rem` to `em` as it's better stylable this way.

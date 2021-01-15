@@ -8,6 +8,10 @@ News Priority:
 
 -->
 
+## 0.1.28 (2020-12-11)
+### Breaking Changes
+- Throwing an error if the passed down model is invalid.
+
 ## 0.1.27 (2020-12-11)
 ### Improvements
 - Changed `rem` to `em` as it's better stylable this way.

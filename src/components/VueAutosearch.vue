@@ -365,6 +365,12 @@ export default defineComponent({
     watch(searchTerm, filterAction, { immediate: true });
     watch(options, filterAction, { immediate: true });
 
+    watch(modelValue, () => {
+      if (modelValue.value !== null && (!modelValue.value.id || !modelValue.value.name)) {
+        throw new Error(`Missing model props for ${modelValue.value}`);
+      }
+    });
+
     const resetSearch = () => {
       if (modelValue.value === null) {
         searchTerm.value = "";

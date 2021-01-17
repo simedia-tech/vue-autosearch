@@ -136,7 +136,7 @@
     />
     
     <span
-      v-if="searchTerm.length > 0 || (modelValue && modelValue.name.length > 0)"
+      v-if="searchTerm && searchTerm.length > 0 || (modelValue && modelValue.name && modelValue.name.length > 0)"
       class="autosearch__clearSearch"
       @click="searchTerm = ''; $emit('update:modelValue', null);"
     />
@@ -221,32 +221,32 @@ export default defineComponent({
   props: {
     options: {
       type: Array as PropType<null | Option[]>,
-      default: null
+      default: null,
     },
     modelValue: {
       type: Object as PropType<null | Option>,
-      default: null
+      default: null,
     },
     maxHeight: {
       type: Number,
-      default: 300
+      default: 300,
     },
     searchFunction: {
       type: Function as PropType<null | ((searchTerm: string) => Promise<{ message: null | string; result: null | Option[] }>)>,
-      default: null
+      default: null,
     },
     placeholder: {
       type: String,
-      default: ""
+      default: "",
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     id: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   emits: {
     ["update:modelValue"]: (payload: null | Option) => {
@@ -259,11 +259,11 @@ export default defineComponent({
     const inputElement: Ref<null | HTMLElement> = ref(null);
     const resultsElement: Ref<null | HTMLElement> = ref(null);
 
-    const searchState = ref(SearchState.NONE);
-    const searchResults: Ref<null | Option[]> = ref([]);
     const message: Ref<null | string> = ref(null);
-    const showResultsDirection = ref(Direction.DOWN);
+    const searchResults: Ref<null | Option[]> = ref([]);
+    const searchState = ref(SearchState.NONE);
     const showResults = ref(false);
+    const showResultsDirection = ref(Direction.DOWN);
 
     watch(showResults, () => {
       if (showResults.value === true && inputElement.value !== null && resultsElement.value !== null) {
@@ -365,12 +365,6 @@ export default defineComponent({
     watch(searchTerm, filterAction, { immediate: true });
     watch(options, filterAction, { immediate: true });
 
-    watch(modelValue, () => {
-      if (modelValue.value !== null && (!modelValue.value.id || !modelValue.value.name)) {
-        throw new Error(`Missing model props for ${modelValue.value}`);
-      }
-    });
-
     const resetSearch = () => {
       if (modelValue.value === null) {
         searchTerm.value = "";
@@ -396,6 +390,6 @@ export default defineComponent({
 
       searchInputHandler,
     };
-  }
+  },
 });
 </script>

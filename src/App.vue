@@ -57,7 +57,7 @@ import VueAutosearch from "./components/VueAutosearch.vue";
 export default defineComponent({
   name: "App",
   components: {
-    VueAutosearch
+    VueAutosearch,
   },
   setup() {
     const selectedOption = ref(null);
@@ -77,7 +77,7 @@ export default defineComponent({
 
         searchTimeout = setTimeout(async () => {
           return resolve({
-            result: (await (await fetch(`https://nominatim.openstreetmap.org/search.php?q=${searchTerm}&polygon_geojson=1&format=jsonv2`)).json()).map((result: { place_id: number; display_name: string }) => ({ id: result.place_id, name: result.display_name }))
+            result: (await (await fetch(`https://nominatim.openstreetmap.org/search.php?q=${searchTerm}&polygon_geojson=1&format=jsonv2`)).json()).map((result: { place_id: number; display_name: string }) => ({ id: result.place_id, name: result.display_name })),
           });
         }, 500);
       });
@@ -96,8 +96,8 @@ export default defineComponent({
       selectedSearchOption,
       options,
 
-      searchFunction
+      searchFunction,
     };
-  }
+  },
 });
 </script>

@@ -8,6 +8,14 @@ News Priority:
 
 -->
 
+## 0.1.29 (????-??-??)
+#### Breaking Changes
+- Removed throwing an error when an invalid modelValue gets passed (introduced in 0.1.28).
+
+### Improvements
+- Dependency updates.
+- Code cleanup and stricter linting rules.
+
 ## 0.1.28 (2020-12-11)
 ### Breaking Changes
 - Throwing an error if the passed down model is invalid.

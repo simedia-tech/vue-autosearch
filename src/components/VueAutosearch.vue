@@ -1,6 +1,7 @@
 <style lang="scss">
 .autosearch__wrapper {
   box-sizing: border-box;
+  font-size: 1rem;
   position: relative;
   text-align: left;
   width: 100%;

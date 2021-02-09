@@ -8,8 +8,12 @@ News Priority:
 
 -->
 
-## 0.1.30 (2021-02-09)
+## 0.1.31 (2021-02-09)
 ### Improvements
+- Added base `rem` size to keep it consistent
+
+## 0.1.30 (2021-02-09)
+### Breaking Changes
 - Changed `em` back to `rem` as it caused more issues than it helped.
 
 ## 0.1.29 (2021-01-17)

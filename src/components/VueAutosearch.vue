@@ -8,12 +8,12 @@
 
 .autosearch__input {
   border: 1px solid lightgrey;
-  border-radius: 0.2em;
+  border-radius: 0.2rem;
   box-sizing: border-box;
   font-family: inherit;
-  font-size: 1em;
-  padding: 0.4em;
-  padding-right: 0.4em + 1em + 0.4em;
+  font-size: 1rem;
+  padding: 0.4rem;
+  padding-right: 0.4rem + 1rem + 0.4rem;
   width: 100%;
 
   &--openDown {
@@ -35,11 +35,11 @@
   border-radius: 50%;
   box-sizing: border-box;
   display: inline-block;
-  height: 0.4em;
+  height: 0.4rem;
   position: absolute;
-  left: 0.2em;
-  top: 0.2em;
-  width: 0.4em;
+  left: 0.2rem;
+  top: 0.2rem;
+  width: 0.4rem;
 }
 
 .autosearch__clearSearch {
@@ -48,10 +48,10 @@
   background-size: contain;
   background-repeat: no-repeat;
   top: calc(50% - 0.5em);
-  right: 0.4em;
-  height: 1em;
+  right: 0.4rem;
+  height: 1rem;
   position: absolute;
-  width: 1em;
+  width: 1rem;
 
   &:hover {
     cursor: pointer;
@@ -68,26 +68,26 @@
   z-index: 1;
 
   &--down {
-    border-radius: 0 0 0.2em 0.2em;
+    border-radius: 0 0 0.2rem 0.2rem;
     border-top: unset;
     margin-top: 0;
   }
 
   &--up {
-    border-radius: 0.2em 0.2em 0 0;
+    border-radius: 0.2rem 0.2rem 0 0;
     border-bottom: unset;
   }
 }
 
 .autosearch__result__statusMessage {
-  padding: 1em;
+  padding: 1rem;
 }
 
 .autosearch__result__option {
   box-sizing: border-box;
   cursor: pointer;
   display: block;
-  padding: 0.4em;
+  padding: 0.4rem;
 
   &:hover {
     background-color: lightgrey;

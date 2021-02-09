@@ -8,6 +8,10 @@ News Priority:
 
 -->
 
+## 0.1.30 (2021-02-09)
+### Improvements
+- Changed `em` back to `rem` as it caused more issues than it helped.
+
 ## 0.1.29 (2021-01-17)
 #### Breaking Changes
 - Removed throwing an error when an invalid modelValue gets passed (introduced in 0.1.28).

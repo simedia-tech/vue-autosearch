@@ -8,6 +8,10 @@ News Priority:
 
 -->
 
+## 0.1.32 (2021-03-30)
+### Improvements
+- Dependency updates
+
 ## 0.1.31 (2021-02-09)
 ### Improvements
 - Added base `rem` size to keep it consistent

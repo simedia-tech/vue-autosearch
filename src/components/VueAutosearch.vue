@@ -233,7 +233,7 @@ export default defineComponent({
       default: 300,
     },
     searchFunction: {
-      type: Function as PropType<null | ((searchTerm: string) => Promise<{ message: null | string; result: null | Option[] }>)>,
+      type: Object as PropType<null | ((searchTerm: string) => Promise<{ message: null | string; result: null | Option[] }>)>,
       default: null,
     },
     placeholder: {

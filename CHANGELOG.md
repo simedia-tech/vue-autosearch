@@ -8,6 +8,10 @@ News Priority:
 
 -->
 
+## 0.1.33 (2021-04-07)
+### Improvements
+- Dependency updates
+
 ## 0.1.32 (2021-03-30)
 ### Improvements
 - Dependency updates

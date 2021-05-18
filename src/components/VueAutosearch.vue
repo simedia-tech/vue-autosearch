@@ -221,11 +221,11 @@ export default defineComponent({
   name: "VueAutosearch",
   props: {
     options: {
-      type: Array as PropType<null | Option[]>,
+      type: Array as null | PropType<Option[]>,
       default: null,
     },
     modelValue: {
-      type: Object as PropType<null | Option>,
+      type: Object as null | PropType<Option>,
       default: null,
     },
     maxHeight: {
@@ -233,7 +233,7 @@ export default defineComponent({
       default: 300,
     },
     searchFunction: {
-      type: Function as PropType<null | ((searchTerm: string) => Promise<{ message: null | string; result: null | Option[] }>)>,
+      type: Function as null | PropType<((searchTerm: string) => Promise<{ message: null | string; result: null | Option[] }>)>,
       default: null,
     },
     placeholder: {

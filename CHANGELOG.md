@@ -8,6 +8,10 @@ News Priority:
 
 -->
 
+## 0.1.34 (2021-05-18)
+### Improvements
+- Fixed typing for searchFunction
+
 ## 0.1.33 (2021-04-07)
 ### Improvements
 - Dependency updates

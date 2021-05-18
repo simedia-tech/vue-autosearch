@@ -34,11 +34,6 @@
   "peerDependencies": {
     "vue": ">=3.0.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm run build && git add ."
-    }
-  },
   "license": "MIT",
   "repository": {
     "type": "git",

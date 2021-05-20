@@ -128,7 +128,7 @@
       @focus="showResults = true"
       @click="showResults = true"
       @input="searchInputHandler"
-      @blur="showResults = false;"
+      @blur="focusLeaveHandler"
     >
     
     <span
@@ -200,6 +200,9 @@
 <script lang="ts">
 import { defineComponent, toRefs, ref, PropType, watch, Ref, nextTick } from "vue";
 
+import { LeaveBehavior } from "@/enums/LeaveBehavior";
+import { assertNever } from "@/util/assertNever";
+
 interface Option {
   id: number;
   name: string;
@@ -247,6 +250,10 @@ export default defineComponent({
     id: {
       type: String,
       default: null,
+    },
+    leaveBehavior: {
+      type: String as PropType<LeaveBehavior>,
+      default: LeaveBehavior.UNCHANGED,
     },
   },
   emits: {
@@ -333,6 +340,25 @@ export default defineComponent({
         inputElement.setSelectionRange(cursorPosition, cursorPosition);
       }
     };
+  
+    const focusLeaveHandler = () => {
+      showResults.value = false;
+
+      switch (props.leaveBehavior) {
+        case LeaveBehavior.UNCHANGED:
+          // nothing to do in this case
+          break;
+      
+        case LeaveBehavior.RESET:
+          resetSearch();
+
+          break;
+
+        default:
+          assertNever(props.leaveBehavior);
+      }
+    };
+
     const filterAction = async () => {
       message.value = null;
 
@@ -389,6 +415,7 @@ export default defineComponent({
       showResults,
       showResultsDirection,
 
+      focusLeaveHandler,
       searchInputHandler,
     };
   },

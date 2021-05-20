@@ -47,6 +47,18 @@
       :search-function="searchFunction"
       :max-height="400"
     />
+
+    <br><br><br>
+
+    With leaveBehavior = "reset"
+    <div>selected result: {{ selectedSearchOptionWithReset }}</div>
+    <hr>
+    <VueAutosearch
+      v-model="selectedSearchOptionWithReset"
+      :search-function="searchFunction"
+      leave-behavior="reset"
+      :max-height="400"
+    />
   </div>
 </template>
 
@@ -63,6 +75,7 @@ export default defineComponent({
     const selectedOption = ref(null);
     const disabledInputOption = ref(null);
     const selectedSearchOption = ref(null);
+    const selectedSearchOptionWithReset = ref(null);
 
     let searchTimeout: null | number = null;
     const searchFunction = (searchTerm: string) => {
@@ -94,6 +107,7 @@ export default defineComponent({
       selectedOption,
       disabledInputOption,
       selectedSearchOption,
+      selectedSearchOptionWithReset,
       options,
 
       searchFunction,

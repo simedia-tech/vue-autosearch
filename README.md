@@ -121,6 +121,11 @@ npm i vue-autosearch
 - example usage: `v-bind:disabled="true"` or for example as computed property `v-bind:disabled="shouldBeDisabled"`
 - defaults to false (meaning that by default the input field will be enabled)
 
+### `leaveBehavior`
+- a string, which defines, what should happen, when the input loses focus and nothing has been selected yet
+- example usage: `leaveBehavior="unchanged"` (same as not providing the property at all) if you want to keep the search text inside the input field or `leaveBehavior="reset"` if you want to reset the content to an empty string when the user clicks outside the input
+- defaults to "unchanged" (meaning that the search text will be kept when the user clicks outside)
+
 ## Custom texts
 By default, if no results were found, the application is loading the search results or an error happened, the according message in English will be displayed ("No results found", "Loading..." and "An error happened, please try again" respectively). These texts can be overwritten for each single component by using slots. This is useful, if you have your app localized to different languages.
 

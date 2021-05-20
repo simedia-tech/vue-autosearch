@@ -8,6 +8,10 @@ News Priority:
 
 -->
 
+## 0.1.35 (2021-05-20)
+### Features
+- Added `leaveBehavior` option
+
 ## 0.1.34 (2021-05-18)
 ### Improvements
 - Fixed typing for searchFunction

@@ -8,6 +8,10 @@ News Priority:
 
 -->
 
+## 0.1.36 (2021-06-14)
+### Improvements
+- Dependency updates
+
 ## 0.1.35 (2021-05-20)
 ### Features
 - Added `leaveBehavior` option

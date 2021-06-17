@@ -95,6 +95,10 @@
   }
 }
 
+.focus {
+  background-color: lightgrey;
+}
+
 @keyframes pulse {
   from {
     transform: scale(1);
@@ -113,7 +117,6 @@
 <template>
   <div class="autosearch__wrapper">
     <input
-      :id="id"
       ref="inputElement"
       type="text"
       autocomplete="off"
@@ -129,6 +132,7 @@
       @click="showResults = true"
       @input="searchInputHandler"
       @blur="focusLeaveHandler"
+      @keydown="focus"
     >
     
     <span
@@ -188,8 +192,10 @@
       <template v-if="(searchState === SearchState.DONE || searchState === SearchState.LOADING) && (searchResults && searchResults.length > 0)">
         <a
           v-for="option in searchResults"
+          :id="id"
           :key="option.id"
           class="autosearch__result__option"
+          @click="$emit('update:modelValue', option); showResults = false;"
           @mousedown.prevent="$emit('update:modelValue', option); showResults = false;"
         >{{ option.name }}</a>
       </template>
@@ -342,6 +348,10 @@ export default defineComponent({
     };
   
     const focusLeaveHandler = () => {
+      let focusedOption = document.getElementsByClassName("autosearch__result__option focus");
+      if (focusedOption[0]) {
+        focusedOption[0].classList.remove("focus");
+      }
       showResults.value = false;
 
       switch (props.leaveBehavior) {
@@ -418,6 +428,66 @@ export default defineComponent({
       focusLeaveHandler,
       searchInputHandler,
     };
+  },
+  methods: {
+    focus(event: KeyboardEvent) {
+      const keys = ["ArrowDown", "ArrowUp", "Enter"];
+      if (!keys.includes(event.key)) return;
+      let focusedOption = document.getElementsByClassName("autosearch__result__option focus");
+      let focusedOptionFiltered: Element[] = [];
+      if (focusedOption[0] && focusedOption[0].id === this.id) {
+        focusedOptionFiltered[0] = focusedOption[0];
+      }
+      let allOptions = document.getElementsByClassName("autosearch__result__option");
+      let allFilteredOptions: Element[] = [];
+      for (var i = 0; i < allOptions.length; i++) {
+        if (allOptions[i].id === this.id) {
+          allFilteredOptions.push(allOptions[i]);
+        }
+      }
+      if (focusedOptionFiltered.length === 0 && allFilteredOptions.length === 0) {
+        return;
+      }
+      if (event.key === "ArrowDown") {
+        this.focusDown(focusedOptionFiltered, allFilteredOptions);
+      } else if (event.key === "ArrowUp") {
+        this.focusUp(focusedOptionFiltered, allFilteredOptions);
+      } else if (event.key === "Enter") {
+        this.select(focusedOptionFiltered);
+      }
+    },
+    focusDown(focusedOptionFiltered:Element[], allFilteredOptions:Element[]) {
+      if (focusedOptionFiltered.length === 0) {
+        allFilteredOptions[0].classList.add("focus");
+        (allFilteredOptions[0] as HTMLElement).focus();
+      } else {
+        const next = focusedOptionFiltered[0].nextElementSibling;
+        if (next !== null) {
+          focusedOptionFiltered[0].classList.remove("focus");
+          next.classList.add("focus");
+          (next as HTMLElement).focus();
+        }
+      }
+    },
+    focusUp(focusedOptionFiltered:Element[], allFilteredOptions:Element[]){
+      if (focusedOptionFiltered.length === 0) {
+        allFilteredOptions[0].classList.add("focus");
+        (allFilteredOptions[0] as HTMLElement).focus();
+      }
+      const previous = focusedOptionFiltered[0].previousElementSibling;
+      if (previous !== null) {
+        focusedOptionFiltered[0].classList.remove("focus");
+        previous.classList.add("focus");
+        (previous as HTMLElement).focus();
+      }
+    },
+    select(focusedOptionFiltered:Element[]){
+      if (focusedOptionFiltered.length === 0) return;
+      (focusedOptionFiltered[0] as HTMLElement).click();
+      if (focusedOptionFiltered[0]) {
+        focusedOptionFiltered[0].classList.remove("focus");
+      }
+    },
   },
 });
 </script>

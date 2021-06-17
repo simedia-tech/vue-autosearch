@@ -39,5 +39,8 @@
     "type": "git",
     "url": "https://github.com/simedia-tech/vue-autosearch.git"
   },
-  "typings": "dist/VueAutosearch.d.ts"
+  "typings": "dist/VueAutosearch.d.ts",
+  "dependencies": {
+    "eslint": "^7.28.0"
+  }
 }

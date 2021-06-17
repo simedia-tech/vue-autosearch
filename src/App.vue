@@ -12,7 +12,7 @@
     <div>selected result: {{ selectedOption }}</div>
     <hr>
     <VueAutosearch
-      id="myId"
+      id="first"
       v-model="selectedOption"
       :options="options"
       placeholder="direct options"
@@ -33,6 +33,7 @@
 
     <br><br><br>
     <VueAutosearch
+      id="second"
       v-model="disabledInputOption"
       :options="[]"
       placeholder="disabled input option"
@@ -43,6 +44,7 @@
     <div>selected result: {{ selectedSearchOption }}</div>
     <hr>
     <VueAutosearch
+      id="third"
       v-model="selectedSearchOption"
       :search-function="searchFunction"
       :max-height="400"
@@ -54,6 +56,7 @@
     <div>selected result: {{ selectedSearchOptionWithReset }}</div>
     <hr>
     <VueAutosearch
+      id="fourth"
       v-model="selectedSearchOptionWithReset"
       :search-function="searchFunction"
       leave-behavior="reset"

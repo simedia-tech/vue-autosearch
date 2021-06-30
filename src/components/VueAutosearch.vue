@@ -191,7 +191,7 @@
           :key="option.id"
           class="autosearch__result__option"
           @mousedown.prevent="$emit('update:modelValue', option); showResults = false;"
-        >{{ option.name }}</a>
+        ><span v-html="option.name"></span></a>
       </template>
     </div>
   </div>

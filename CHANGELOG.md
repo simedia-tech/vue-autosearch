@@ -8,6 +8,10 @@ News Priority:
 
 -->
 
+## 0.1.37 (2021-10-06)
+### Improvements
+- Added shadow to results
+
 ## 0.1.36 (2021-06-14)
 ### Improvements
 - Dependency updates

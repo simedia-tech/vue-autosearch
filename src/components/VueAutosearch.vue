@@ -71,12 +71,14 @@
   &--down {
     border-radius: 0 0 0.2rem 0.2rem;
     border-top: unset;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.4);
     margin-top: 0;
   }
 
   &--up {
     border-radius: 0.2rem 0.2rem 0 0;
     border-bottom: unset;
+    box-shadow: 0 -2px 5px 0 rgba(0, 0, 0, 0.4);
   }
 }
 

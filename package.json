@@ -16,20 +16,20 @@
   "module": "dist/VueAutosearch.common.js",
   "unpkg": "dist/VueAutosearch.umd.min.js",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.31.0",
-    "@typescript-eslint/parser": "^4.31.0",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
     "@vue/cli-plugin-babel": "^4.5.13",
     "@vue/cli-plugin-eslint": "^4.5.13",
     "@vue/cli-plugin-typescript": "^4.5.13",
     "@vue/cli-service": "^4.5.13",
-    "@vue/compiler-sfc": "^3.2.11",
+    "@vue/compiler-sfc": "^3.2.19",
     "@vue/eslint-config-typescript": "^7.0.0",
-    "eslint-plugin-vue": "^7.17.0",
+    "eslint-plugin-vue": "^7.19.1",
     "husky": "^7.0.2",
-    "sass": "^1.39.2",
+    "sass": "^1.42.1",
     "sass-loader": "^10.2.0",
-    "typescript": "~4.3.5",
-    "vue": "^3.1.1"
+    "typescript": "^4.4.3",
+    "vue": "^3.2.19"
   },
   "peerDependencies": {
     "vue": ">=3.0.0"
